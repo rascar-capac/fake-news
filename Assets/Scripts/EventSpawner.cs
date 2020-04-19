@@ -26,6 +26,7 @@ public class EventSpawner : MonoBehaviour
         if(timer <= 0)
         {
             EventInitializer newEvent = Instantiate(eventPrefab, context);
+            newEvent.transform.SetAsFirstSibling();
             newEvent.Data = Events[Random.Range(0, Events.Count)];
             postSpawner.Posts.AddRange(newEvent.Data.posts);
             newEvent.Init();

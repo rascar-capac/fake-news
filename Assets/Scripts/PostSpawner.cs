@@ -25,6 +25,7 @@ public class PostSpawner : MonoBehaviour
         if(timer <= 0)
         {
             PostInitializer newPost = Instantiate(postPrefab, context);
+            newPost.transform.SetAsFirstSibling();
             newPost.Data = Posts[Random.Range(0, Posts.Count)];
             newPost.Init();
             timer = Random.Range(minInterval, maxInterval);
