@@ -15,10 +15,10 @@ MonoBehaviour:
   text: "[GOV] confinement appliqu\xE9 \xE0 toute la population jusqu\u2019\xE0 nouvel
     ordre - les exceptions sont rares"
   trust: 0
-  paranoia: 0
-  contamination: 0
+  paranoia: 10
+  contamination: -20
   casualties: 0
-  eventsToAdd:
-  - {fileID: 11400000}
   postsToAdd:
   - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
+  eventsToAdd:
+  - {fileID: 11400000}

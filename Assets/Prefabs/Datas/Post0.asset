@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Post0
   m_EditorClassIdentifier: 
   text: "La plateforme nous ment\u202F! Ce nouveau mod\xE9rateur est un manipulateur\u202F!"
-  paranoia: 0
+  trust: 0
+  paranoia: 10
   contamination: 0
   casualties: 0
   postsToAdd: []

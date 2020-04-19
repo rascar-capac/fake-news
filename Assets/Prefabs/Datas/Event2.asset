@@ -16,7 +16,7 @@ MonoBehaviour:
   trust: 0
   paranoia: 0
   contamination: 0
-  casualties: 0
-  eventsToAdd: []
+  casualties: 100
   postsToAdd:
   - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}
+  eventsToAdd: []
