@@ -17,3 +17,6 @@ MonoBehaviour:
   paranoia: 0
   contamination: 0
   casualties: 0
+  eventsToAdd: []
+  postsToAdd:
+  - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}

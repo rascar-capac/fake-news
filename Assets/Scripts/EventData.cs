@@ -9,5 +9,6 @@ public class EventData : AData
     public int paranoia = 0;
     public int contamination = 0;
     [Range(0, int.MaxValue)] public int casualties = 0;
-    public List<PostData> posts = null;
+    public List<EventData> eventsToAdd = null;
+    public List<PostData> postsToAdd = null;
 }
