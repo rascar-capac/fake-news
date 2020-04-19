@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899b45f584405f44d82805f131709827, type: 3}
+  m_Name: News1
+  m_EditorClassIdentifier: 
+  text: "Un sp\xE9cialiste parle : \xAB j\u2019ai d\xE9couvert un nouveau moyen de
+    contrer le virus\u202F: il suffit de se boucher l\u2019anus avec un plug. \xBB"
+  paranoia: 0
+  contamination: 0
+  casualties: 0
