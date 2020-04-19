@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 899b45f584405f44d82805f131709827, type: 3}
-  m_Name: News0
+  m_Name: Post0
   m_EditorClassIdentifier: 
   text: "La plateforme nous ment\u202F! Ce nouveau mod\xE9rateur est un manipulateur\u202F!"
   paranoia: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventInitializer : AInitializer<EventData>
+public class PostInitializer : AInitializer<PostData>
 {
     public override void Init()
     {

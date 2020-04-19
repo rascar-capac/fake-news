@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 965941810}
   - component: {fileID: 965941809}
   m_Layer: 0
-  m_Name: NewsManager
+  m_Name: PostsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,12 +534,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 965941808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b66394f3897ac47b325a38a70fde94, type: 3}
+  m_Script: {fileID: 11500000, guid: 132e1ad01ad6d1c48bbe8dcd995fe9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posts:
+  - {fileID: 11400000, guid: a462da77482da0540b6185ec67f7ced7, type: 2}
+  - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
+  - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}
+  - {fileID: 11400000, guid: 9e3c06dfb3c39f848b657105452ab74a, type: 2}
   minInterval: 0.2
   maxInterval: 5
-  elementPrefab: {fileID: 2864417890566774636, guid: 504a3b514a297244f9f7915309e82e47,
+  postPrefab: {fileID: 6254731329254261414, guid: 504a3b514a297244f9f7915309e82e47,
     type: 3}
   context: {fileID: 1033378478}
 --- !u!4 &965941810
@@ -646,7 +651,7 @@ GameObject:
   - component: {fileID: 1111080327}
   - component: {fileID: 1111080328}
   m_Layer: 5
-  m_Name: News
+  m_Name: Posts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -762,7 +767,7 @@ GameObject:
   - component: {fileID: 1291968144}
   - component: {fileID: 1291968143}
   m_Layer: 0
-  m_Name: EventManager
+  m_Name: EventsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,12 +782,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291968142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b66394f3897ac47b325a38a70fde94, type: 3}
+  m_Script: {fileID: 11500000, guid: 4923b15b28777864b9768856a268770d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events:
+  - {fileID: 11400000, guid: 359c2ac3d3ef4484c9ca38fd1fafab89, type: 2}
+  - {fileID: 11400000, guid: 785b42f02b65a254d879dd981f8b8bf9, type: 2}
+  - {fileID: 11400000, guid: e51dfe0792350684baa1be4415d20dbc, type: 2}
   minInterval: 0.2
   maxInterval: 5
-  elementPrefab: {fileID: 5452613745185552366, guid: 5e9f6870b85f6ba4d869c6d6a50b32d9,
+  eventPrefab: {fileID: 2338402941021116430, guid: 5e9f6870b85f6ba4d869c6d6a50b32d9,
     type: 3}
   context: {fileID: 2019776455}
 --- !u!4 &1291968144

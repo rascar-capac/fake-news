@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New News", menuName = "News")]
-public class NewsData : AData
+[CreateAssetMenu(fileName = "New Post", menuName = "Post")]
+public class PostData : AData
 {
     public int paranoia = 0;
     public int contamination = 0;

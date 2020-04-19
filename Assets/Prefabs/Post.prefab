@@ -66,7 +66,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea794202ad28c9141aa5d1bf076d6e46, type: 2}
-  m_sharedMaterial: {fileID: 2437054707049629246, guid: ea794202ad28c9141aa5d1bf076d6e46,
+  m_sharedMaterial: {fileID: -8478136393022891829, guid: ea794202ad28c9141aa5d1bf076d6e46,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2864417890566774638}
   - component: {fileID: 6254731329254261414}
   m_Layer: 5
-  m_Name: News
+  m_Name: Post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,13 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2864417890566774636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce43f9a6c784a04fbb49a5e6aca3a97, type: 3}
+  m_Script: {fileID: 11500000, guid: 704941de55a462340bd6e6ef22b76588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  datas:
-  - {fileID: 11400000, guid: 87c2a9da548fcdf41a175849be75c1ae, type: 2}
-  - {fileID: 11400000, guid: a462da77482da0540b6185ec67f7ced7, type: 2}
-  - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
-  - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}
-  - {fileID: 11400000, guid: 9e3c06dfb3c39f848b657105452ab74a, type: 2}
   text: {fileID: 2525469671328323344}

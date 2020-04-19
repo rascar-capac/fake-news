@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIListElementSpawner : MonoBehaviour
+public class EventSpawner : MonoBehaviour
 {
+    [SerializeField] private List<EventData> _events = null;
     [SerializeField] [Range(0, float.MaxValue)] private float minInterval = 0.2f;
     [SerializeField] [Range(0, float.MaxValue)] private float maxInterval = 5f;
-    [SerializeField] private GameObject elementPrefab = null;
+    [SerializeField] private EventInitializer eventPrefab = null;
     [SerializeField] private RectTransform context = null;
+    [SerializeField] private PostSpawner postSpawner = null;
+
+    public List<EventData> Events { get => _events; }
 
     private float timer;
 
@@ -21,7 +25,10 @@ public class UIListElementSpawner : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
-            Instantiate(elementPrefab, context);
+            EventInitializer newEvent = Instantiate(eventPrefab, context);
+            newEvent.Data = Events[Random.Range(0, Events.Count)];
+            postSpawner.Posts.AddRange(newEvent.Data.posts);
+            newEvent.Init();
             timer = Random.Range(minInterval, maxInterval);
         }
     }

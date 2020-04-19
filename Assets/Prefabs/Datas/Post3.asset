@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899b45f584405f44d82805f131709827, type: 3}
-  m_Name: News3
+  m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
+  m_Name: Post3
   m_EditorClassIdentifier: 
   text: "Rupture de stock des masques suite \xE0 du vandalisme. Les m\xE9decins sont
     inquiets pour la suite.\r"

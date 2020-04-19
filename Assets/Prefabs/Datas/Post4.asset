@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899b45f584405f44d82805f131709827, type: 3}
-  m_Name: News4
+  m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
+  m_Name: Post4
   m_EditorClassIdentifier: 
   text: "Il a attrap\xE9 le coronavirus suite \xE0 la morsure de son chien\u202F!
     On nous cache des choses...\r"
