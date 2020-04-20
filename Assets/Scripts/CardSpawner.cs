@@ -38,41 +38,44 @@ public class CardSpawner : MonoBehaviour
         postTimer -= Time.deltaTime;
         if(postTimer <= 0)
         {
-            SpawnCard(PostDeck, postPrefab, postContext);
+            if(PostDeck.Count > 0)
+            {
+                SpawnCard(PostDeck, postPrefab, postContext);
+            }
             postTimer = Random.Range(minPostInterval, maxPostInterval);
         }
 
         eventTimer -= Time.deltaTime;
         if(eventTimer <= 0)
         {
-            SpawnCard(EventDeck, eventPrefab, eventContext);
+            if(EventDeck.Count > 0)
+            {
+                SpawnCard(EventDeck, eventPrefab, eventContext);
+            }
             eventTimer = Random.Range(minEventInterval, maxEventInterval);
         }
     }
 
     private void SpawnCard(List<ACardData> deck, ACardHandler prefab, RectTransform context)
     {
-        if(deck.Count > 0)
-        {
-            ACardHandler newCard = Instantiate(prefab, context);
-            newCard.transform.SetAsFirstSibling();
-            ACardData data = deck[Random.Range(0, deck.Count)];
-            deck.Remove(data);
-            newCard.Init(data, populationHandler);
+        ACardHandler newCard = Instantiate(prefab, context);
+        newCard.transform.SetAsFirstSibling();
+        ACardData data = deck[Random.Range(0, deck.Count)];
+        deck.Remove(data);
+        newCard.Init(data, populationHandler);
 
-            foreach(PostData postData in data.postsToAdd)
+        foreach(PostData postData in data.postsToAdd)
+        {
+            if(!PostDeck.Contains(postData))
             {
-                if(!PostDeck.Contains(postData))
-                {
-                    PostDeck.Add(postData);
-                }
+                PostDeck.Add(postData);
             }
-            foreach(EventData eventData in data.eventsToAdd)
+        }
+        foreach(EventData eventData in data.eventsToAdd)
+        {
+            if(!EventDeck.Contains(eventData))
             {
-                if(!EventDeck.Contains(eventData))
-                {
-                    EventDeck.Add(eventData);
-                }
+                EventDeck.Add(eventData);
             }
         }
     }
