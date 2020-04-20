@@ -14,13 +14,12 @@ public class CardSpawner : MonoBehaviour
     [SerializeField] [Range(0, float.MaxValue)] private float maxInfoInterval = 5f;
     [SerializeField] private InfoHandler infoPrefab = null;
     [SerializeField] private RectTransform infoContext = null;
+    private PopulationHandler populationHandler;
+    private float postTimer;
+    private float infoTimer;
 
     public List<ACardData> PostDeck { get => _postDeck ; }
     public List<ACardData> InfoDeck { get => _infoDeck ; }
-
-    private float postTimer;
-    private float infoTimer;
-    private PopulationHandler populationHandler;
 
     private void Awake()
     {

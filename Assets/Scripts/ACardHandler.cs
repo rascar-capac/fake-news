@@ -6,10 +6,9 @@ using TMPro;
 public abstract class ACardHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text = null;
+    private PopulationHandler populationHandler;
 
     public ACardData Data { get; set; }
-
-    private PopulationHandler populationHandler;
 
     public virtual void Init(ACardData data, PopulationHandler populationHandler)
     {
