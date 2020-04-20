@@ -276,7 +276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6254731329254261414}
-        m_MethodName: AffectPopulation
+        m_MethodName: BlockPost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

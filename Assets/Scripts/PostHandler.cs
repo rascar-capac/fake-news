@@ -9,15 +9,20 @@ public class PostHandler : ACardHandler
         StartCoroutine(Expire());
     }
 
-    public override void AffectPopulation()
+    public void ValidatePost()
     {
-        base.AffectPopulation();
+        AffectPopulation();
+        Destroy(this.gameObject);
+    }
+
+    public void BlockPost()
+    {
         Destroy(this.gameObject);
     }
 
     public IEnumerator Expire()
     {
         yield return new WaitForSeconds(2);
-        AffectPopulation();
+        ValidatePost();
     }
 }
