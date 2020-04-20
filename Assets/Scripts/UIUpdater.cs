@@ -6,12 +6,15 @@ using TMPro;
 public class UIUpdater : MonoBehaviour
 {
     [SerializeField] private PopulationHandler populationHandler = null;
-    [SerializeField] private TextMeshProUGUI trustDisplay = null;
-    [SerializeField] private TextMeshProUGUI paranoiaDisplay = null;
-    [SerializeField] private TextMeshProUGUI contaminationDisplay = null;
-    [SerializeField] private TextMeshProUGUI casualtiesDisplay = null;
+    [SerializeField] private TextMeshProUGUI trust = null;
+    [SerializeField] private TextMeshProUGUI paranoia = null;
+    [SerializeField] private TextMeshProUGUI contamination = null;
+    [SerializeField] private TextMeshProUGUI casualties = null;
     [SerializeField] private TimeHandler timeHandler = null;
-    [SerializeField] private TextMeshProUGUI timeDisplay = null;
+    [SerializeField] private TextMeshProUGUI time = null;
+    [SerializeField] private GameManager gameManager = null;
+    [SerializeField] private TextMeshProUGUI gameOverTitle = null;
+    [SerializeField] private TextMeshProUGUI finalScore = null;
 
     private void Start()
     {
@@ -20,30 +23,37 @@ public class UIUpdater : MonoBehaviour
         populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
         populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
         timeHandler.OnTimeChanged.AddListener(UpdateTime);
+        gameManager.OnGameEnded.AddListener(UpdateGameOverScreen);
     }
 
     private void UpdateTrustLevel()
     {
-        trustDisplay.SetText(populationHandler.TrustLevel.ToString());
+        trust.SetText(populationHandler.TrustLevel.ToString());
     }
 
     private void UpdateParanoiaLevel()
     {
-        paranoiaDisplay.SetText(populationHandler.ParanoiaLevel.ToString());
+        paranoia.SetText(populationHandler.ParanoiaLevel.ToString());
     }
 
     private void UpdateContaminationLevel()
     {
-        contaminationDisplay.SetText(populationHandler.ContaminationLevel.ToString());
+        contamination.SetText(populationHandler.ContaminationLevel.ToString());
     }
 
     private void UpdateCasualtiesCount()
     {
-        casualtiesDisplay.SetText(populationHandler.CasualtiesCount.ToString());
+        casualties.SetText(populationHandler.CasualtiesCount.ToString());
     }
 
     private void UpdateTime()
     {
-        timeDisplay.SetText(timeHandler.DayCount.ToString());
+        time.SetText(timeHandler.DayCount.ToString());
+    }
+
+    private void UpdateGameOverScreen()
+    {
+        gameOverTitle.SetText(gameManager.IsGameLost ? "Population décimée" : "Épidémie surmontée");
+        finalScore.SetText(gameManager.FinalScore.ToString());
     }
 }

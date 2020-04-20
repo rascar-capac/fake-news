@@ -5,16 +5,17 @@ using UnityEngine.Events;
 
 public class PopulationHandler : MonoBehaviour
 {
-    [SerializeField] [Range(0, int.MaxValue)] private int startingTrustLevel = 0;
-    [SerializeField] [Range(0, int.MaxValue)] private int startingParanoiaLevel = 0;
-    [SerializeField] [Range(0, int.MaxValue)] private int startingContaminationLevel = 0;
-    [SerializeField] [Range(0, int.MaxValue)] private int startingCasualtiesCount = 0;
+    [SerializeField] [Range(0, 100)] private int startingTrustLevel = 0;
+    [SerializeField] [Range(0, 100)] private int startingParanoiaLevel = 0;
+    [SerializeField] [Range(0, 100)] private int startingContaminationLevel = 0;
+    [SerializeField] [Range(0, 100)] private int startingCasualtiesCount = 0;
     [SerializeField] [Range(0, 1f)] private float randomContaminationVariationProbability = 0.1f;
     [SerializeField] private TimeHandler timeHandler = null;
     private UnityEvent _onTrustLevelChanged;
     private UnityEvent _onParanoiaLevelChanged;
     private UnityEvent _onContaminationLevelChanged;
     private UnityEvent _onCasualtiesCountChanged;
+    private UnityEvent _onFullContamination;
     private int _trustLevel;
     private int _paranoiaLevel;
     private int _contaminationLevel;
@@ -25,6 +26,7 @@ public class PopulationHandler : MonoBehaviour
     public UnityEvent OnParanoiaLevelChanged => _onParanoiaLevelChanged;
     public UnityEvent OnContaminationLevelChanged => _onContaminationLevelChanged;
     public UnityEvent OnCasualtiesCountChanged => _onCasualtiesCountChanged;
+    public UnityEvent OnFullContamination => _onFullContamination;
     public int TrustLevel
     {
         get => _trustLevel;
@@ -49,6 +51,10 @@ public class PopulationHandler : MonoBehaviour
         set
         {
             _contaminationLevel = Mathf.Clamp(value, 0, 100);
+            if(_contaminationLevel == 100)
+            {
+                OnFullContamination.Invoke();
+            }
             OnContaminationLevelChanged.Invoke();
         }
     }
@@ -68,6 +74,7 @@ public class PopulationHandler : MonoBehaviour
         _onParanoiaLevelChanged = new UnityEvent();
         _onContaminationLevelChanged = new UnityEvent();
         _onCasualtiesCountChanged = new UnityEvent();
+        _onFullContamination = new UnityEvent();
     }
 
     private void Start()
