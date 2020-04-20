@@ -18,8 +18,8 @@ public class CardSpawner : MonoBehaviour
     private float postTimer;
     private float infoTimer;
 
-    public List<ACardData> PostDeck { get => _postDeck ; }
-    public List<ACardData> InfoDeck { get => _infoDeck ; }
+    public List<ACardData> PostDeck => _postDeck;
+    public List<ACardData> InfoDeck => _infoDeck;
 
     private void Awake()
     {
