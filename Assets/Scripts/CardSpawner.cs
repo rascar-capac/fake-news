@@ -9,17 +9,17 @@ public class CardSpawner : MonoBehaviour
     [SerializeField] [Range(0, float.MaxValue)] private float maxPostInterval = 5f;
     [SerializeField] private PostHandler postPrefab = null;
     [SerializeField] private RectTransform postContext = null;
-    [SerializeField] private List<ACardData> _eventDeck = null;
-    [SerializeField] [Range(0, float.MaxValue)] private float minEventInterval = 0.2f;
-    [SerializeField] [Range(0, float.MaxValue)] private float maxEventInterval = 5f;
-    [SerializeField] private EventHandler eventPrefab = null;
-    [SerializeField] private RectTransform eventContext = null;
+    [SerializeField] private List<ACardData> _infoDeck = null;
+    [SerializeField] [Range(0, float.MaxValue)] private float minInfoInterval = 0.2f;
+    [SerializeField] [Range(0, float.MaxValue)] private float maxInfoInterval = 5f;
+    [SerializeField] private InfoHandler infoPrefab = null;
+    [SerializeField] private RectTransform infoContext = null;
 
     public List<ACardData> PostDeck { get => _postDeck ; }
-    public List<ACardData> EventDeck { get => _eventDeck ; }
+    public List<ACardData> InfoDeck { get => _infoDeck ; }
 
     private float postTimer;
-    private float eventTimer;
+    private float infoTimer;
     private PopulationHandler populationHandler;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class CardSpawner : MonoBehaviour
     private void Start()
     {
         postTimer = Random.Range(minPostInterval, maxPostInterval);
-        eventTimer = Random.Range(minEventInterval, maxEventInterval);
+        infoTimer = Random.Range(minInfoInterval, maxInfoInterval);
     }
 
     private void Update()
@@ -45,14 +45,14 @@ public class CardSpawner : MonoBehaviour
             postTimer = Random.Range(minPostInterval, maxPostInterval);
         }
 
-        eventTimer -= Time.deltaTime;
-        if(eventTimer <= 0)
+        infoTimer -= Time.deltaTime;
+        if(infoTimer <= 0)
         {
-            if(EventDeck.Count > 0)
+            if(InfoDeck.Count > 0)
             {
-                SpawnCard(EventDeck, eventPrefab, eventContext);
+                SpawnCard(InfoDeck, infoPrefab, infoContext);
             }
-            eventTimer = Random.Range(minEventInterval, maxEventInterval);
+            infoTimer = Random.Range(minInfoInterval, maxInfoInterval);
         }
     }
 
@@ -71,11 +71,11 @@ public class CardSpawner : MonoBehaviour
                 PostDeck.Add(postData);
             }
         }
-        foreach(EventData eventData in data.eventsToAdd)
+        foreach(InfoData infoData in data.infosToAdd)
         {
-            if(!EventDeck.Contains(eventData))
+            if(!InfoDeck.Contains(infoData))
             {
-                EventDeck.Add(eventData);
+                InfoDeck.Add(infoData);
             }
         }
     }

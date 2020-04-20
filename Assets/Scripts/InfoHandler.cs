@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventHandler : ACardHandler
+public class InfoHandler : ACardHandler
 {
     public override void Init(ACardData data, PopulationHandler populationHandler)
     {

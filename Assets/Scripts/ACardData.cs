@@ -11,5 +11,5 @@ public class ACardData : ScriptableObject
     [Range(0, 1000)] public int casualties = 0;
 
     public List<PostData> postsToAdd = null;
-    public List<EventData> eventsToAdd = null;
+    public List<InfoData> infosToAdd = null;
 }

@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8534c6ebf3ec149b2fca81dbfeb378, type: 3}
-  m_Name: Event0
+  m_Name: Info2
   m_EditorClassIdentifier: 
-  text: "[GOV] confinement appliqu\xE9 \xE0 toute la population jusqu\u2019\xE0 nouvel
-    ordre - les exceptions sont rares"
+  text: "[PRESSE] stock de masques vandalis\xE9 au centre de distribution principal"
   trust: 0
-  paranoia: 10
-  contamination: -20
-  casualties: 0
+  paranoia: 0
+  contamination: 0
+  casualties: 100
   postsToAdd:
-  - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
-  eventsToAdd:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}
+  eventsToAdd: []
