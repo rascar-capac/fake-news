@@ -20,5 +20,5 @@ MonoBehaviour:
   casualties: 0
   postsToAdd:
   - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
-  eventsToAdd:
+  infosToAdd:
   - {fileID: 11400000}
