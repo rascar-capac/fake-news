@@ -7,6 +7,7 @@ public class TimeHandler : MonoBehaviour
 {
     [SerializeField] [Range(0, 10f)] private float dayPeriod = 0.5f;
     [SerializeField] private int gameDuration = 100;
+    [SerializeField] private GameManager gameManager = null;
     private UnityEvent _onTimeChanged;
     private UnityEvent _onLastDayReached;
     private int _dayCount;
@@ -38,15 +39,18 @@ public class TimeHandler : MonoBehaviour
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer<= 0)
+        if(gameManager.IsGameRunning)
         {
-            DayCount++;
-            if(DayCount >= gameDuration)
+            timer -= Time.deltaTime;
+            if(timer<= 0)
             {
-                _onLastDayReached.Invoke();
+                DayCount++;
+                if(DayCount >= gameDuration)
+                {
+                    _onLastDayReached.Invoke();
+                }
+                timer = dayPeriod;
             }
-            timer = dayPeriod;
         }
     }
 }

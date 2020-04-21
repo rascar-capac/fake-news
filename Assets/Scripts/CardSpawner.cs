@@ -5,53 +5,39 @@ using UnityEngine;
 public class CardSpawner : MonoBehaviour
 {
     [SerializeField] private List<ACardData> _postDeck = null;
-    [SerializeField] [Range(0, float.MaxValue)] private float minPostInterval = 0.2f;
-    [SerializeField] [Range(0, float.MaxValue)] private float maxPostInterval = 5f;
     [SerializeField] private PostHandler postPrefab = null;
     [SerializeField] private RectTransform postContext = null;
+    [SerializeField] [Range(0, 1f)] private float postSpawnProbability = 0.1f;
     [SerializeField] private List<ACardData> _infoDeck = null;
-    [SerializeField] [Range(0, float.MaxValue)] private float minInfoInterval = 0.2f;
-    [SerializeField] [Range(0, float.MaxValue)] private float maxInfoInterval = 5f;
     [SerializeField] private InfoHandler infoPrefab = null;
     [SerializeField] private RectTransform infoContext = null;
-    private PopulationHandler populationHandler;
-    private float postTimer;
-    private float infoTimer;
+    [SerializeField] [Range(0, 1f)] private float infoSpawnProbability = 0.1f;
+    [SerializeField] private TimeHandler timeHandler = null;
+    [SerializeField] private PopulationHandler populationHandler;
 
     public List<ACardData> PostDeck => _postDeck;
     public List<ACardData> InfoDeck => _infoDeck;
 
-    private void Awake()
-    {
-        populationHandler = FindObjectOfType<PopulationHandler>();
-    }
-
     private void Start()
     {
-        postTimer = Random.Range(minPostInterval, maxPostInterval);
-        infoTimer = Random.Range(minInfoInterval, maxInfoInterval);
+        timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
     }
 
-    private void Update()
+    private void TestSpawnProbability()
     {
-        postTimer -= Time.deltaTime;
-        if(postTimer <= 0)
+        if(PostDeck.Count > 0)
         {
-            if(PostDeck.Count > 0)
+            if(Random.value <= postSpawnProbability)
             {
                 SpawnCard(PostDeck, postPrefab, postContext);
             }
-            postTimer = Random.Range(minPostInterval, maxPostInterval);
         }
-
-        infoTimer -= Time.deltaTime;
-        if(infoTimer <= 0)
+        if(InfoDeck.Count > 0)
         {
-            if(InfoDeck.Count > 0)
+            if(Random.value <= infoSpawnProbability)
             {
                 SpawnCard(InfoDeck, infoPrefab, infoContext);
             }
-            infoTimer = Random.Range(minInfoInterval, maxInfoInterval);
         }
     }
 

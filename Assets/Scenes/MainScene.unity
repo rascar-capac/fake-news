@@ -6905,7 +6905,7 @@ PrefabInstance:
     - target: {fileID: 4394965572075424880, guid: ac8b06859a3bdc647bb48a882a6dcdda,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4394965572075424880, guid: ac8b06859a3bdc647bb48a882a6dcdda,
         type: 3}
@@ -6952,10 +6952,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1807346598700608931, guid: 5bacc954c0820be4392f5da60a611a57,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1771051327}
     - target: {fileID: 3797065662793455831, guid: 5bacc954c0820be4392f5da60a611a57,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3797065662793455831, guid: 5bacc954c0820be4392f5da60a611a57,
         type: 3}
@@ -7019,7 +7024,7 @@ PrefabInstance:
     - target: {fileID: 7276331390073369161, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7276331390073369161, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
@@ -7086,10 +7091,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e51dfe0792350684baa1be4415d20dbc,
         type: 2}
+    - target: {fileID: 1291968143, guid: 1076ea8ee6a2d6440be63f761bb495fc, type: 3}
+      propertyPath: timeHandler
+      value: 
+      objectReference: {fileID: 146083004}
+    - target: {fileID: 1291968143, guid: 1076ea8ee6a2d6440be63f761bb495fc, type: 3}
+      propertyPath: populationHandler
+      value: 
+      objectReference: {fileID: 1631204603}
+    - target: {fileID: 1291968143, guid: 1076ea8ee6a2d6440be63f761bb495fc, type: 3}
+      propertyPath: infoSpawnProbability
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291968143, guid: 1076ea8ee6a2d6440be63f761bb495fc, type: 3}
+      propertyPath: postSpawnProbability
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7683649647268271654, guid: 1076ea8ee6a2d6440be63f761bb495fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7683649647268271654, guid: 1076ea8ee6a2d6440be63f761bb495fc,
         type: 3}
@@ -7203,7 +7224,7 @@ PrefabInstance:
     - target: {fileID: 8210173135891725481, guid: 5c2969b88736c7741ac725b4b2e5f06a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8210173135891725481, guid: 5c2969b88736c7741ac725b4b2e5f06a,
         type: 3}

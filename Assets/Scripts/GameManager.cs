@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log("pause");
         _isGameRunning = false;
         PauseMenuPanel.SetActive(true);
     }
