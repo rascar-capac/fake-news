@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4821492924185643123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 539.075, y: 355.9651, z: -986.5555}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   populationHandler: {fileID: 0}
-  trustDisplay: {fileID: 0}
-  paranoiaDisplay: {fileID: 0}
-  contaminationDisplay: {fileID: 0}
-  casualtiesDisplay: {fileID: 0}
+  trust: {fileID: 0}
+  paranoia: {fileID: 0}
+  contamination: {fileID: 0}
+  casualties: {fileID: 0}
   timeHandler: {fileID: 0}
-  timeDisplay: {fileID: 0}
+  time: {fileID: 0}
+  gameManager: {fileID: 0}
+  gameOverTitle: {fileID: 0}
+  finalScore: {fileID: 0}
