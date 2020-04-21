@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
   m_Name: Post1
   m_EditorClassIdentifier: 
-  text: "Un sp\xE9cialiste parle : \xAB j\u2019ai d\xE9couvert un nouveau moyen de
-    contrer le virus\u202F: il suffit de se boucher l\u2019anus avec un plug. \xBB"
+  text: "La premi\xE8re chose \xE0 faire apr\xE8s avoir lu ce post\u202F: rester
+    chez vous\u202F! C\u2019est officiel, le virus est tr\xE8s volatile."
+  trust: 0
   paranoia: 0
-  contamination: 0
+  contamination: -3
   casualties: 0
+  postsToAdd:
+  - {fileID: 11400000}
+  infosToAdd: []

@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8534c6ebf3ec149b2fca81dbfeb378, type: 3}
-  m_Name: Info2
+  m_Name: Info11
   m_EditorClassIdentifier: 
-  text: "[MED] sympt\xF4me d\xE9tect\xE9 - les selles des personnes infect\xE9es
-    sont d\u2019un rose bonbon \xE9clatant"
+  text: "[PRESSE] stock de masques vandalis\xE9 au centre de distribution principal"
   trust: 0
   paranoia: 0
-  contamination: 0
+  contamination: 5
   casualties: 0
   postsToAdd:
-  - {fileID: 11400000, guid: 8efcd7394fcb13846875e6d7084b909b, type: 2}
-  - {fileID: 11400000, guid: fc874945d3f36af41876758a7d9a5c0a, type: 2}
+  - {fileID: 11400000, guid: 6f564087d4d728a47b0a51f75d4a67fa, type: 2}
   infosToAdd: []

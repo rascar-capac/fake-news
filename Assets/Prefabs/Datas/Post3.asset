@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
   m_Name: Post3
   m_EditorClassIdentifier: 
-  text: "Rupture de stock des masques suite \xE0 du vandalisme. Les m\xE9decins sont
-    inquiets pour la suite.\r"
+  text: "\xC0 bas les antennes 5G ! De source s\xFBre, elles sont responsables de
+    cette \xE9pid\xE9mie."
+  trust: 0
   paranoia: 0
   contamination: 0
   casualties: 0
+  postsToAdd:
+  - {fileID: 11400000}
+  infosToAdd: []

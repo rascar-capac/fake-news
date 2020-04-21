@@ -250,7 +250,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.6666667, g: 0.7176471, b: 0.7176471, a: 1}
     m_HighlightedColor: {r: 0.79718184, g: 0.851, b: 0.851, a: 1}
@@ -299,3 +299,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2525469671328323344}
+  publishedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
+  expirationDelay: 5

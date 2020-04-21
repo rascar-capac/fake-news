@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
-  m_Name: Post2
+  m_Name: Post14
   m_EditorClassIdentifier: 
-  text: "Ne caressez plus vos animaux, ils vous refileraient le virus. C\u2019est
-    mon amie kin\xE9 qui me l\u2019a dit."
+  text: "C\u2019est officiel, des nouvelles mesures ont \xE9t\xE9 prises par le gouvernement\u202F:
+    le confinement est lev\xE9 tous les week-ends.\r"
   trust: 0
   paranoia: 0
-  contamination: 0
+  contamination: 10
   casualties: 0
   postsToAdd:
   - {fileID: 11400000}

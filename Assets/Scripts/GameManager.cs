@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject MainMenuPanel = null;
     [SerializeField] private GameObject PauseMenuPanel = null;
     [SerializeField] private GameObject GameOverPanel = null;
-    private UnityEvent _onGameStarted;
     private UnityEvent _onGameEnded;
     private bool _isGameRunning;
     private int _finalScore;
@@ -24,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _onGameStarted = new UnityEvent();
         _onGameEnded = new UnityEvent();
         _isGameRunning = false;
         _isGameLost = false;

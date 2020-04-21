@@ -13,7 +13,7 @@ public class CardSpawner : MonoBehaviour
     [SerializeField] private RectTransform infoContext = null;
     [SerializeField] [Range(0, 1f)] private float infoSpawnProbability = 0.1f;
     [SerializeField] private TimeHandler timeHandler = null;
-    [SerializeField] private PopulationHandler populationHandler;
+    [SerializeField] private PopulationHandler populationHandler = null;
 
     public List<ACardData> PostDeck => _postDeck;
     public List<ACardData> InfoDeck => _infoDeck;
@@ -44,7 +44,7 @@ public class CardSpawner : MonoBehaviour
     private void SpawnCard(List<ACardData> deck, ACardHandler prefab, RectTransform context)
     {
         ACardHandler newCard = Instantiate(prefab, context);
-        newCard.transform.SetAsFirstSibling();
+        // newCard.transform.SetAsFirstSibling();
         ACardData data = deck[Random.Range(0, deck.Count)];
         deck.Remove(data);
         newCard.Init(data, populationHandler);

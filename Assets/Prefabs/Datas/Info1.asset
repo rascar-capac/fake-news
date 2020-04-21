@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8534c6ebf3ec149b2fca81dbfeb378, type: 3}
   m_Name: Info1
   m_EditorClassIdentifier: 
-  text: '[MED] le virus se propage par contact visuel'
+  text: "[MED] le virus est extr\xEAmement volatile"
   trust: 0
   paranoia: 0
   contamination: 0
   casualties: 0
   postsToAdd:
+  - {fileID: 11400000, guid: 87c2a9da548fcdf41a175849be75c1ae, type: 2}
+  - {fileID: 11400000, guid: a462da77482da0540b6185ec67f7ced7, type: 2}
+  - {fileID: 11400000, guid: f570f579a6467e84db381d3b3d341227, type: 2}
   - {fileID: 11400000, guid: 9e3c06dfb3c39f848b657105452ab74a, type: 2}
-  eventsToAdd: []
+  - {fileID: 11400000, guid: 37ea04d260b80c14bb4101e202ddb90f, type: 2}
+  infosToAdd: []

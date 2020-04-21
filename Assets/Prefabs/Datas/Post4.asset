@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
   m_Name: Post4
   m_EditorClassIdentifier: 
-  text: "Il a attrap\xE9 le coronavirus suite \xE0 la morsure de son chien\u202F!
-    On nous cache des choses...\r"
+  text: "Le virus \xE9tant d\u2019une masse mol\xE9culaire tr\xE8s \xE9lev\xE9e,
+    il aura tendance \xE0 tomber tr\xE8s vite au sol. Vous n\u2019\xEAtes donc plus
+    expos\xE9 en prenant 2m de distanciation sociale - Dr. Bellman"
+  trust: 0
   paranoia: 0
-  contamination: 0
+  contamination: 10
   casualties: 0
+  postsToAdd:
+  - {fileID: 11400000}
+  infosToAdd: []

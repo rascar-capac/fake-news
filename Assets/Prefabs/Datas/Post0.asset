@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c75340c558ffc40b3660fe550a688b, type: 3}
   m_Name: Post0
   m_EditorClassIdentifier: 
-  text: "La plateforme nous ment\u202F! Ce nouveau mod\xE9rateur est un manipulateur\u202F!"
+  text: "OMG en faite le virus il et super l\xE9g\xE9 du cou fo faire tro gaff kan
+    on sort sur la vi dma mere jsors plu mdr"
   trust: 0
-  paranoia: 10
-  contamination: 0
+  paranoia: 0
+  contamination: -2
   casualties: 0
-  postsToAdd: []
-  eventsToAdd: []
+  postsToAdd:
+  - {fileID: 11400000}
+  infosToAdd: []

@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8534c6ebf3ec149b2fca81dbfeb378, type: 3}
   m_Name: Info0
   m_EditorClassIdentifier: 
-  text: "[GOV] confinement appliqu\xE9 \xE0 toute la population jusqu\u2019\xE0 nouvel
-    ordre - les exceptions sont rares"
+  text: '[MED] le virus se contracte par les muqueuses'
   trust: 0
-  paranoia: 10
-  contamination: -20
+  paranoia: 0
+  contamination: 0
   casualties: 0
-  postsToAdd:
-  - {fileID: 11400000, guid: f94293f82cb06004e816fa3f87de5034, type: 2}
-  infosToAdd:
-  - {fileID: 11400000}
+  postsToAdd: []
+  infosToAdd: []

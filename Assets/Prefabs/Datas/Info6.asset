@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8534c6ebf3ec149b2fca81dbfeb378, type: 3}
-  m_Name: Info2
+  m_Name: Info6
   m_EditorClassIdentifier: 
-  text: "[MED] sympt\xF4me d\xE9tect\xE9 - les selles des personnes infect\xE9es
-    sont d\u2019un rose bonbon \xE9clatant"
+  text: "[MED] un verre d\u2019ail press\xE9 et de vinaigre chaque matin permet de
+    limiter les chances de contraction du virus"
   trust: 0
   paranoia: 0
   contamination: 0
   casualties: 0
   postsToAdd:
-  - {fileID: 11400000, guid: 8efcd7394fcb13846875e6d7084b909b, type: 2}
-  - {fileID: 11400000, guid: fc874945d3f36af41876758a7d9a5c0a, type: 2}
+  - {fileID: 11400000, guid: 667179108b5b6504fb335423e5d9df82, type: 2}
+  - {fileID: 11400000, guid: 1d1e7e260c93de84d8e658836b77647e, type: 2}
   infosToAdd: []
