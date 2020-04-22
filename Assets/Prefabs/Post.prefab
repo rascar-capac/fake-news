@@ -65,16 +65,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ea794202ad28c9141aa5d1bf076d6e46, type: 2}
-  m_sharedMaterial: {fileID: -8478136393022891829, guid: ea794202ad28c9141aa5d1bf076d6e46,
+  m_fontAsset: {fileID: 11400000, guid: 32e35ed1ecacd40449d426c6e2b59b3d, type: 2}
+  m_sharedMaterial: {fileID: 7940472639849708797, guid: 32e35ed1ecacd40449d426c6e2b59b3d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285029459
+  m_fontColor: {r: 0.3254902, g: 0.36078432, b: 0.40784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 10
+  m_fontSize: 30
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 5
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 7
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 2864417890566774637}
   - component: {fileID: 2864417890566774639}
   - component: {fileID: 2864417890566774638}
+  - component: {fileID: -1549523845230092112}
   - component: {fileID: -2886631932642287099}
   - component: {fileID: 6254731329254261414}
   m_Layer: 5
@@ -183,7 +184,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864417890566774636}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -217,13 +218,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6666667, g: 0.7176471, b: 0.7176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -232,6 +233,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1549523845230092112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864417890566774636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.23529412}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!114 &-2886631932642287099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,13 +266,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.6666667, g: 0.7176471, b: 0.7176471, a: 1}
-    m_HighlightedColor: {r: 0.79718184, g: 0.851, b: 0.851, a: 1}
-    m_PressedColor: {r: 0.46337664, g: 0.700324, b: 0.8396226, a: 1}
-    m_SelectedColor: {r: 0.6666667, g: 0.7176471, b: 0.7176471, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.58431375, g: 0.6862745, b: 0.7529412, a: 1}
+    m_HighlightedColor: {r: 0.78039217, g: 0.9254902, b: 0.93333334, a: 1}
+    m_PressedColor: {r: 0.40784314, g: 0.42745098, b: 0.8784314, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.6862745, b: 0.7529412, a: 1}
+    m_DisabledColor: {r: 1, g: 0.4745098, b: 0.4745098, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.2
   m_SpriteState:
@@ -299,5 +315,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2525469671328323344}
-  publishedColor: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
   expirationDelay: 5
+  expiredColor: {r: 0.7294118, g: 0.8627451, b: 0.34509805, a: 0.5019608}

@@ -5,33 +5,43 @@ using UnityEngine.UI;
 
 public class PostHandler : ACardHandler
 {
-    [SerializeField] private Color publishedColor = Color.gray;
     [SerializeField] private int expirationDelay = 5;
+    [SerializeField] private Color expiredColor = Color.gray;
+    private Button card;
+    private IEnumerator expirationCoroutine;
+    private bool isProcessed;
 
-    private Image background;
-
-    public void Start()
+    public void Awake()
     {
-        StartCoroutine(Expire());
-        background = GetComponent<Image>();
-    }
-
-    public void ValidatePost()
-    {
-        AffectPopulation();
-        // Destroy(this.gameObject);
-        background.color = publishedColor;
+        card = GetComponent<Button>();
+        expirationCoroutine = Expire();
+        StartCoroutine(expirationCoroutine);
+        isProcessed = false;
     }
 
     public void BlockPost()
     {
-        // Destroy(this.gameObject);
-        background.color = publishedColor;
+        if(!isProcessed)
+        {
+            card.interactable = false;
+            StopCoroutine(expirationCoroutine);
+            isProcessed = true;
+        }
     }
 
     public IEnumerator Expire()
     {
         yield return new WaitForSeconds(expirationDelay);
         ValidatePost();
+    }
+
+    public void ValidatePost()
+    {
+        AffectPopulation();
+        ColorBlock expiredColors = card.colors;
+        expiredColors.disabledColor = expiredColor;
+        card.colors = expiredColors;
+        card.interactable = false;
+        isProcessed = true;
     }
 }

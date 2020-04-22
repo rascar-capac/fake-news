@@ -44,7 +44,7 @@ public class CardSpawner : MonoBehaviour
     private void SpawnCard(List<ACardData> deck, ACardHandler prefab, RectTransform context)
     {
         ACardHandler newCard = Instantiate(prefab, context);
-        // newCard.transform.SetAsFirstSibling();
+        newCard.transform.SetAsFirstSibling();
         ACardData data = deck[Random.Range(0, deck.Count)];
         deck.Remove(data);
         newCard.Init(data, populationHandler);
