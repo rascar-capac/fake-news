@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardSpawner : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CardSpawner : MonoBehaviour
     [SerializeField] private InfoHandler infoPrefab = null;
     [SerializeField] private RectTransform infoContext = null;
     [SerializeField] [Range(0, 1f)] private float infoSpawnProbability = 0.1f;
+    [SerializeField] [Range(0, 10f)] private float timeToSpawn = 1f;
     [SerializeField] private TimeHandler timeHandler = null;
     [SerializeField] private PopulationHandler populationHandler = null;
 
@@ -44,7 +46,6 @@ public class CardSpawner : MonoBehaviour
     private void SpawnCard(List<ACardData> deck, ACardHandler prefab, RectTransform context)
     {
         ACardHandler newCard = Instantiate(prefab, context);
-        newCard.transform.SetAsFirstSibling();
         ACardData data = deck[Random.Range(0, deck.Count)];
         deck.Remove(data);
         newCard.Init(data, populationHandler);
@@ -63,5 +64,18 @@ public class CardSpawner : MonoBehaviour
                 InfoDeck.Add(infoData);
             }
         }
+
+        newCard.transform.SetAsFirstSibling();
+        newCard.GetComponent<CanvasGroup>().alpha = 0;
+        StartCoroutine(SlideSmooth(newCard));
+    }
+
+    public IEnumerator SlideSmooth(ACardHandler card)
+    {
+        yield return null;
+        LayoutElement layoutElement = card.GetComponent<LayoutElement>();
+        LeanTween.value(0, card.GetComponent<HorizontalLayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
+                .setOnUpdate((float value) => layoutElement.preferredHeight = value)
+                .setOnComplete(() => card.GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint());
     }
 }

@@ -33,7 +33,7 @@ public class TimeHandler : MonoBehaviour
 
     private void Start()
     {
-        DayCount = 0;
+        _dayCount = 0;
         timer = dayPeriod;
     }
 
