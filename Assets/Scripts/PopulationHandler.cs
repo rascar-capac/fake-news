@@ -32,8 +32,11 @@ public class PopulationHandler : MonoBehaviour
         get => _trustLevel;
         set
         {
-            _trustLevel = Mathf.Clamp(value, 0, 100);
-            OnTrustLevelChanged.Invoke();
+            if(value != _trustLevel)
+            {
+                _trustLevel = Mathf.Clamp(value, 0, 100);
+                OnTrustLevelChanged.Invoke();
+            }
         }
     }
     public int ParanoiaLevel
@@ -41,8 +44,11 @@ public class PopulationHandler : MonoBehaviour
         get => _paranoiaLevel;
         set
         {
-            _paranoiaLevel = Mathf.Clamp(value, 0, 100);
-            OnParanoiaLevelChanged.Invoke();
+            if(value != _paranoiaLevel)
+            {
+                _paranoiaLevel = Mathf.Clamp(value, 0, 100);
+                OnParanoiaLevelChanged.Invoke();
+            }
         }
     }
     public int ContaminationLevel
@@ -50,12 +56,15 @@ public class PopulationHandler : MonoBehaviour
         get => _contaminationLevel;
         set
         {
-            _contaminationLevel = Mathf.Clamp(value, 0, 100);
-            if(_contaminationLevel == 100)
+            if(value != _contaminationLevel)
             {
-                OnFullContamination.Invoke();
+                _contaminationLevel = Mathf.Clamp(value, 0, 100);
+                if(_contaminationLevel == 100)
+                {
+                    OnFullContamination.Invoke();
+                }
+                OnContaminationLevelChanged.Invoke();
             }
-            OnContaminationLevelChanged.Invoke();
         }
     }
     public int CasualtiesCount
@@ -63,8 +72,11 @@ public class PopulationHandler : MonoBehaviour
         get => _casualtiesCount;
         set
         {
-            _casualtiesCount = Mathf.Clamp(value, 0, 100);
-            OnCasualtiesCountChanged.Invoke();
+            if(value != _casualtiesCount)
+            {
+                _casualtiesCount = Mathf.Clamp(value, 0, 100);
+                OnCasualtiesCountChanged.Invoke();
+            }
         }
     }
 
@@ -80,10 +92,10 @@ public class PopulationHandler : MonoBehaviour
     private void Start()
     {
         timeHandler.OnTimeChanged.AddListener(ApplyRandomContaminationVariation);
-        TrustLevel = startingTrustLevel;
-        ParanoiaLevel = startingParanoiaLevel;
-        ContaminationLevel = startingContaminationLevel;
-        CasualtiesCount = startingCasualtiesCount;
+        _trustLevel = startingTrustLevel;
+        _paranoiaLevel = startingParanoiaLevel;
+        _contaminationLevel = startingContaminationLevel;
+        _casualtiesCount = startingCasualtiesCount;
     }
 
     private void ApplyRandomContaminationVariation()

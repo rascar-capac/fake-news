@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] [Range(0, 10f)] private float menuTransitionsTime = 1f;
     [SerializeField] private TimeHandler timeHandler = null;
     [SerializeField] private PopulationHandler populationHandler = null;
     [SerializeField] private GameObject MainMenuPanel = null;
@@ -39,7 +41,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _isGameRunning = true;
-        MainMenuPanel.SetActive(false);
+        CanvasGroup canvasGroup = MainMenuPanel.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = false;
+        canvasGroup.LeanAlpha(0, menuTransitionsTime)
+                .setOnComplete(() => MainMenuPanel.SetActive(false));
     }
 
     public void PauseGame()
@@ -65,6 +70,11 @@ public class GameManager : MonoBehaviour
         _isGameRunning = false;
         OnGameEnded.Invoke();
         GameOverPanel.SetActive(true);
+        CanvasGroup canvasGroup = GameOverPanel.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = false;
+        canvasGroup.alpha = 0;
+        canvasGroup.LeanAlpha(1, menuTransitionsTime)
+                .setOnComplete(() => canvasGroup.interactable = true);
     }
 
     public void ResetGame()

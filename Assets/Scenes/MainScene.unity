@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 229526625}
   - component: {fileID: 229526624}
   - component: {fileID: 229526623}
+  - component: {fileID: 229526626}
   m_Layer: 5
   m_Name: StatsFrame
   m_TagString: Untagged
@@ -309,7 +310,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 20}
-  m_SizeDelta: {x: 634.9, y: 258.2}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &229526623
 MonoBehaviour:
@@ -330,8 +331,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 10
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
@@ -372,6 +373,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229526621}
   m_CullTransparentMesh: 0
+--- !u!114 &229526626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229526621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &314610998
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +554,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2127,7 +2142,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2858,7 +2873,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2977,7 +2992,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.58431375, g: 0.6862745, b: 0.75294125, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.2
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -4208,7 +4223,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -4619,7 +4634,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -4931,7 +4946,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5416,6 +5431,7 @@ GameObject:
   - component: {fileID: 1537913828}
   - component: {fileID: 1537913830}
   - component: {fileID: 1537913829}
+  - component: {fileID: 1537913831}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -5479,6 +5495,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537913827}
   m_CullTransparentMesh: 0
+--- !u!225 &1537913831
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537913827}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1568400398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5678,7 +5706,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5847,7 +5875,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -6084,6 +6112,7 @@ GameObject:
   - component: {fileID: 1764722712}
   - component: {fileID: 1764722714}
   - component: {fileID: 1764722713}
+  - component: {fileID: 1764722715}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -6147,6 +6176,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764722711}
   m_CullTransparentMesh: 0
+--- !u!225 &1764722715
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764722711}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1771051327 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7276331390073369142, guid: c08fe213145bda343be9b8f20dc32013,
@@ -7229,6 +7270,21 @@ PrefabInstance:
       propertyPath: finalScore
       value: 
       objectReference: {fileID: 854529060}
+    - target: {fileID: 3762003257876193890, guid: 5c2969b88736c7741ac725b4b2e5f06a,
+        type: 3}
+      propertyPath: updateColor.r
+      value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762003257876193890, guid: 5c2969b88736c7741ac725b4b2e5f06a,
+        type: 3}
+      propertyPath: updateColor.g
+      value: 0.3019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762003257876193890, guid: 5c2969b88736c7741ac725b4b2e5f06a,
+        type: 3}
+      propertyPath: updateColor.b
+      value: 0.29411766
+      objectReference: {fileID: 0}
     - target: {fileID: 4821492924185643123, guid: 5c2969b88736c7741ac725b4b2e5f06a,
         type: 3}
       propertyPath: m_Name
