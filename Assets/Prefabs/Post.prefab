@@ -377,8 +377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToSpawn: 1
   hasInstantEffect: 0
-  populationHandler: {fileID: 7276331388319099661, guid: c08fe213145bda343be9b8f20dc32013,
-    type: 3}
   text: {fileID: 2525469671328323344}
 --- !u!114 &6018023488569082010
 MonoBehaviour:
@@ -393,4 +391,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expirationDelay: 5
-  expiredColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  expiredColor: {r: 0.7294118, g: 0.8627451, b: 0.34509805, a: 1}

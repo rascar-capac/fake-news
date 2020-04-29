@@ -40,8 +40,9 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateTrustLevel()
     {
+        LeanTween.cancel(trust.gameObject);
         trust.color = updateColor;
-        trust.fontSize += 2;
+        // trust.fontSize += 2;
         LeanTween.value(trust.gameObject, trust.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => trust.color = value);
         trust.SetText(populationHandler.TrustLevel.ToString());
@@ -49,8 +50,9 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateParanoiaLevel()
     {
+        LeanTween.cancel(paranoia.gameObject);
         paranoia.color = updateColor;
-        paranoia.fontSize += 2;
+        // paranoia.fontSize += 2;
         LeanTween.value(paranoia.gameObject, paranoia.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => paranoia.color = value);
         paranoia.SetText(populationHandler.ParanoiaLevel.ToString());
@@ -58,8 +60,9 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateContaminationLevel()
     {
+        LeanTween.cancel(contamination.gameObject);
         contamination.color = updateColor;
-        contamination.fontSize += 2;
+        // contamination.fontSize += 2;
         LeanTween.value(contamination.gameObject, contamination.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => contamination.color = value);
         contamination.SetText(populationHandler.ContaminationLevel.ToString());
@@ -67,7 +70,9 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateCasualtiesCount()
     {
+        LeanTween.cancel(casualties.gameObject);
         casualties.color = updateColor;
+        // casualties.fontSize += 2;
         LeanTween.value(casualties.gameObject, casualties.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => casualties.color = value);
         casualties.SetText(populationHandler.CasualtiesCount.ToString());
