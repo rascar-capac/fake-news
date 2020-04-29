@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PostHandler : ACardHandler
+[RequireComponent(typeof(Button))]
+public class Blockable : MonoBehaviour
 {
     [SerializeField] private int expirationDelay = 5;
     [SerializeField] private Color expiredColor = Color.gray;
-    private Button card;
+    private CardInitializer cardInitializer;
+    private Button cardButton;
     private IEnumerator expirationCoroutine;
     private bool isProcessed;
 
     public void Awake()
     {
-        card = GetComponent<Button>();
-        expirationCoroutine = Expire();
+        cardInitializer = GetComponent<CardInitializer>();
+        cardButton = GetComponent<Button>();
+        expirationCoroutine = WaitForExpiration();
         StartCoroutine(expirationCoroutine);
         isProcessed = false;
     }
@@ -23,13 +26,13 @@ public class PostHandler : ACardHandler
     {
         if(!isProcessed)
         {
-            card.interactable = false;
+            cardButton.interactable = false;
             StopCoroutine(expirationCoroutine);
             isProcessed = true;
         }
     }
 
-    public IEnumerator Expire()
+    public IEnumerator WaitForExpiration()
     {
         yield return new WaitForSeconds(expirationDelay);
         ValidatePost();
@@ -37,11 +40,11 @@ public class PostHandler : ACardHandler
 
     public void ValidatePost()
     {
-        AffectPopulation();
-        ColorBlock expiredColors = card.colors;
+        cardInitializer.AffectPopulation();
+        ColorBlock expiredColors = cardButton.colors;
         expiredColors.disabledColor = expiredColor;
-        card.colors = expiredColors;
-        card.interactable = false;
+        cardButton.colors = expiredColors;
+        cardButton.interactable = false;
         isProcessed = true;
     }
 }

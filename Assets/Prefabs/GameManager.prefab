@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7276331390073369161}
   - component: {fileID: 7276331390073369142}
+  - component: {fileID: 7276331388319099662}
+  - component: {fileID: 7276331388319099661}
+  - component: {fileID: 7276331388319099660}
+  - component: {fileID: 7276331388319099659}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,8 +47,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5258ff413e06307449a1e529e1f4111b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeHandler: {fileID: 0}
-  populationHandler: {fileID: 0}
-  MainMenuPanel: {fileID: 0}
-  PauseMenuPanel: {fileID: 0}
-  GameOverPanel: {fileID: 0}
+  menuTransitionsTime: 1
+  mainMenuPanel: {fileID: 0}
+  pauseMenuPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+--- !u!114 &7276331388319099662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276331390073369143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76c48a5fd328534bb08fa0649eb230e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayPeriod: 1
+  gameDuration: 100
+--- !u!114 &7276331388319099661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276331390073369143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0de34a875adf3348bebf84205c7b97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTrustLevel: 0
+  startingParanoiaLevel: 0
+  startingContaminationLevel: 0
+  startingCasualtiesCount: 0
+  randomContaminationVariationProbability: 0.1
+--- !u!114 &7276331388319099660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276331390073369143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912ee8ebeb2dc1e439dcd13c96b7e6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postCard:
+    prefab: {fileID: 0}
+    context: {fileID: 0}
+    dataDeck: []
+    hasUniqueData: 0
+    cardSpawnProbability: 0.1
+  infoCard:
+    prefab: {fileID: 0}
+    context: {fileID: 0}
+    dataDeck: []
+    hasUniqueData: 0
+    cardSpawnProbability: 0.1
+--- !u!114 &7276331388319099659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276331390073369143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89c6c67372c7ec42a65584ffdcb29d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trust: {fileID: 0}
+  paranoia: {fileID: 0}
+  contamination: {fileID: 0}
+  casualties: {fileID: 0}
+  time: {fileID: 0}
+  gameOverTitle: {fileID: 0}
+  finalScore: {fileID: 0}
+  updateColor: {r: 0.92156863, g: 0.3019608, b: 0.29411766, a: 1}
+  gameLostText: "Population d\xE9cim\xE9e"
+  gameWonText: "\xC9pid\xE9mie surmont\xE9e"

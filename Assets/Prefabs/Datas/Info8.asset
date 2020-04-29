@@ -18,4 +18,5 @@ MonoBehaviour:
   contamination: 0
   casualties: 0
   postsToAdd: []
-  infosToAdd: []
+  infosToAdd:
+  - {fileID: 11400000, guid: 8c6890796c6018943ba405fd7ba169d7, type: 2}

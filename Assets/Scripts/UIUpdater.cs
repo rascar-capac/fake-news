@@ -5,34 +5,42 @@ using TMPro;
 
 public class UIUpdater : MonoBehaviour
 {
-    [SerializeField] private PopulationHandler populationHandler = null;
     [SerializeField] private TextMeshProUGUI trust = null;
     [SerializeField] private TextMeshProUGUI paranoia = null;
     [SerializeField] private TextMeshProUGUI contamination = null;
     [SerializeField] private TextMeshProUGUI casualties = null;
-    [SerializeField] private TimeHandler timeHandler = null;
     [SerializeField] private TextMeshProUGUI time = null;
-    [SerializeField] private GameManager gameManager = null;
     [SerializeField] private TextMeshProUGUI gameOverTitle = null;
     [SerializeField] private TextMeshProUGUI finalScore = null;
     [SerializeField] private Color updateColor = Color.red;
+    [SerializeField] private string gameLostText = "Population décimée";
+    [SerializeField] private string gameWonText = "Épidémie surmontée";
     private Color initialFontColor;
+    private GameManager gameManager;
+    private TimeHandler timeHandler;
+    private PopulationHandler populationHandler;
 
+    private void Awake()
+    {
+        initialFontColor = trust.color;
+        gameManager = GetComponent<GameManager>();
+        timeHandler = GetComponent<TimeHandler>();
+        populationHandler = GetComponent<PopulationHandler>();
+    }
 
     private void Start()
     {
+        gameManager.OnGameEnded.AddListener(UpdateGameOverScreen);
+        timeHandler.OnTimeChanged.AddListener(UpdateTime);
         populationHandler.OnTrustLevelChanged.AddListener(UpdateTrustLevel);
         populationHandler.OnParanoiaLevelChanged.AddListener(UpdateParanoiaLevel);
         populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
         populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
-        timeHandler.OnTimeChanged.AddListener(UpdateTime);
-        gameManager.OnGameEnded.AddListener(UpdateGameOverScreen);
-        initialFontColor = trust.color;
     }
 
     private void UpdateTrustLevel()
     {
-        trust.color = Color.red;
+        trust.color = updateColor;
         trust.fontSize += 2;
         LeanTween.value(trust.gameObject, trust.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => trust.color = value);
@@ -41,7 +49,7 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateParanoiaLevel()
     {
-        paranoia.color = Color.red;
+        paranoia.color = updateColor;
         paranoia.fontSize += 2;
         LeanTween.value(paranoia.gameObject, paranoia.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => paranoia.color = value);
@@ -50,7 +58,7 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateContaminationLevel()
     {
-        contamination.color = Color.red;
+        contamination.color = updateColor;
         contamination.fontSize += 2;
         LeanTween.value(contamination.gameObject, contamination.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => contamination.color = value);
@@ -59,7 +67,7 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdateCasualtiesCount()
     {
-        casualties.color = Color.red;
+        casualties.color = updateColor;
         LeanTween.value(casualties.gameObject, casualties.color, initialFontColor, 2f)
                 .setOnUpdateColor((Color value) => casualties.color = value);
         casualties.SetText(populationHandler.CasualtiesCount.ToString());
@@ -74,9 +82,9 @@ public class UIUpdater : MonoBehaviour
         }
     }
 
-    private void UpdateGameOverScreen()
+    private void UpdateGameOverScreen(bool isGameLost, int finalScore)
     {
-        gameOverTitle.SetText(gameManager.IsGameLost ? "Population décimée" : "Épidémie surmontée");
-        finalScore.SetText(gameManager.FinalScore.ToString());
+        this.gameOverTitle.SetText(isGameLost ? gameLostText : gameWonText);
+        this.finalScore.SetText(finalScore.ToString());
     }
 }

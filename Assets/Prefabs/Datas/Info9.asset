@@ -21,4 +21,5 @@ MonoBehaviour:
   postsToAdd:
   - {fileID: 11400000, guid: 3d82cb627371ef5469e96cb9c2855075, type: 2}
   - {fileID: 11400000, guid: e956e0c81b1a50d47869cab62da703db, type: 2}
-  infosToAdd: []
+  infosToAdd:
+  - {fileID: 11400000, guid: 569abc1198899904a94bfcb38fa1ae82, type: 2}

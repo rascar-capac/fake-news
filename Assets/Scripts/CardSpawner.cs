@@ -1,81 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CardSpawner : MonoBehaviour
+public class CardSpawner : ASpawner<CardInitializer, ACardData>
 {
-    [SerializeField] private List<ACardData> _postDeck = null;
-    [SerializeField] private PostHandler postPrefab = null;
-    [SerializeField] private RectTransform postContext = null;
-    [SerializeField] [Range(0, 1f)] private float postSpawnProbability = 0.1f;
-    [SerializeField] private List<ACardData> _infoDeck = null;
-    [SerializeField] private InfoHandler infoPrefab = null;
-    [SerializeField] private RectTransform infoContext = null;
-    [SerializeField] [Range(0, 1f)] private float infoSpawnProbability = 0.1f;
-    [SerializeField] [Range(0, 10f)] private float timeToSpawn = 1f;
-    [SerializeField] private TimeHandler timeHandler = null;
-    [SerializeField] private PopulationHandler populationHandler = null;
+    [SerializeField] private SpawnableCard postCard = null;
+    [SerializeField] private SpawnableCard infoCard = null;
+    private TimeHandler timeHandler;
 
-    public List<ACardData> PostDeck => _postDeck;
-    public List<ACardData> InfoDeck => _infoDeck;
+    private void Awake()
+    {
+        timeHandler = GetComponent<TimeHandler>();
+    }
 
     private void Start()
     {
-        timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
+        timeHandler.OnTimeChanged.AddListener(TestSpawnProbabilities);
     }
 
-    private void TestSpawnProbability()
+    private void TestSpawnProbabilities()
     {
-        if(PostDeck.Count > 0)
+        TestSpawnProbability(postCard);
+        TestSpawnProbability(infoCard);
+    }
+
+    private void TestSpawnProbability(SpawnableCard spawnableCard)
+    {
+        if(spawnableCard.DataDeck.Count > 0)
         {
-            if(Random.value <= postSpawnProbability)
+            if(Random.value <= spawnableCard.CardSpawnProbability)
             {
-                SpawnCard(PostDeck, postPrefab, postContext);
-            }
-        }
-        if(InfoDeck.Count > 0)
-        {
-            if(Random.value <= infoSpawnProbability)
-            {
-                SpawnCard(InfoDeck, infoPrefab, infoContext);
+                SpawnObject(spawnableCard);
             }
         }
     }
 
-    private void SpawnCard(List<ACardData> deck, ACardHandler prefab, RectTransform context)
+    protected override CardInitializer SpawnObject(SpawnableObject spawnableCard)
     {
-        ACardHandler newCard = Instantiate(prefab, context);
-        ACardData data = deck[Random.Range(0, deck.Count)];
-        deck.Remove(data);
-        newCard.Init(data, populationHandler);
+        CardInitializer newCard = base.SpawnObject(spawnableCard);
 
-        foreach(PostData postData in data.postsToAdd)
+        foreach(PostData postData in newCard.Data.PostsToAdd)
         {
-            if(!PostDeck.Contains(postData))
+            if(!postCard.DataDeck.Contains(postData))
             {
-                PostDeck.Add(postData);
+                postCard.DataDeck.Add(postData);
             }
         }
-        foreach(InfoData infoData in data.infosToAdd)
+        foreach(InfoData infoData in newCard.Data.InfosToAdd)
         {
-            if(!InfoDeck.Contains(infoData))
+            if(!infoCard.DataDeck.Contains(infoData))
             {
-                InfoDeck.Add(infoData);
+                infoCard.DataDeck.Add(infoData);
             }
         }
 
-        newCard.transform.SetAsFirstSibling();
-        newCard.GetComponent<CanvasGroup>().alpha = 0;
-        StartCoroutine(SlideSmooth(newCard));
+        return newCard;
     }
 
-    public IEnumerator SlideSmooth(ACardHandler card)
+    [System.Serializable]
+    protected class SpawnableCard : SpawnableObject
     {
-        yield return null;
-        LayoutElement layoutElement = card.GetComponent<LayoutElement>();
-        LeanTween.value(0, card.GetComponent<HorizontalLayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
-                .setOnUpdate((float value) => layoutElement.preferredHeight = value)
-                .setOnComplete(() => card.GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint());
+        [SerializeField] [Range(0, 1f)] private float cardSpawnProbability = 0.1f;
+
+        public float CardSpawnProbability => cardSpawnProbability;
     }
 }

@@ -10,92 +10,92 @@ public class PopulationHandler : MonoBehaviour
     [SerializeField] [Range(0, 100)] private int startingContaminationLevel = 0;
     [SerializeField] [Range(0, 100)] private int startingCasualtiesCount = 0;
     [SerializeField] [Range(0, 1f)] private float randomContaminationVariationProbability = 0.1f;
-    [SerializeField] private TimeHandler timeHandler = null;
-    private UnityEvent _onTrustLevelChanged;
-    private UnityEvent _onParanoiaLevelChanged;
-    private UnityEvent _onContaminationLevelChanged;
-    private UnityEvent _onCasualtiesCountChanged;
-    private UnityEvent _onFullContamination;
-    private int _trustLevel;
-    private int _paranoiaLevel;
-    private int _contaminationLevel;
-    private int _casualtiesCount;
-    private float timer;
+    private int trustLevel;
+    private int paranoiaLevel;
+    private int contaminationLevel;
+    private int casualtiesCount;
+    private TimeHandler timeHandler;
+    private UnityEvent onTrustLevelChanged;
+    private UnityEvent onParanoiaLevelChanged;
+    private UnityEvent onContaminationLevelChanged;
+    private UnityEvent onCasualtiesCountChanged;
+    private UnityEvent onFullContamination;
 
-    public UnityEvent OnTrustLevelChanged => _onTrustLevelChanged;
-    public UnityEvent OnParanoiaLevelChanged => _onParanoiaLevelChanged;
-    public UnityEvent OnContaminationLevelChanged => _onContaminationLevelChanged;
-    public UnityEvent OnCasualtiesCountChanged => _onCasualtiesCountChanged;
-    public UnityEvent OnFullContamination => _onFullContamination;
     public int TrustLevel
     {
-        get => _trustLevel;
+        get => trustLevel;
         set
         {
-            if(value != _trustLevel)
+            if(value != trustLevel)
             {
-                _trustLevel = Mathf.Clamp(value, 0, 100);
-                OnTrustLevelChanged.Invoke();
+                trustLevel = Mathf.Clamp(value, 0, 100);
+                onTrustLevelChanged.Invoke();
             }
         }
     }
     public int ParanoiaLevel
     {
-        get => _paranoiaLevel;
+        get => paranoiaLevel;
         set
         {
-            if(value != _paranoiaLevel)
+            if(value != paranoiaLevel)
             {
-                _paranoiaLevel = Mathf.Clamp(value, 0, 100);
-                OnParanoiaLevelChanged.Invoke();
+                paranoiaLevel = Mathf.Clamp(value, 0, 100);
+                onParanoiaLevelChanged.Invoke();
             }
         }
     }
     public int ContaminationLevel
     {
-        get => _contaminationLevel;
+        get => contaminationLevel;
         set
         {
-            if(value != _contaminationLevel)
+            if(value != contaminationLevel)
             {
-                _contaminationLevel = Mathf.Clamp(value, 0, 100);
-                if(_contaminationLevel == 100)
+                contaminationLevel = Mathf.Clamp(value, 0, 100);
+                if(contaminationLevel == 100)
                 {
-                    OnFullContamination.Invoke();
+                    onFullContamination.Invoke();
                 }
-                OnContaminationLevelChanged.Invoke();
+                onContaminationLevelChanged.Invoke();
             }
         }
     }
     public int CasualtiesCount
     {
-        get => _casualtiesCount;
+        get => casualtiesCount;
         set
         {
-            if(value != _casualtiesCount)
+            if(value != casualtiesCount)
             {
-                _casualtiesCount = Mathf.Clamp(value, 0, 100);
-                OnCasualtiesCountChanged.Invoke();
+                casualtiesCount = Mathf.Clamp(value, 0, 100);
+                onCasualtiesCountChanged.Invoke();
             }
         }
     }
+    public UnityEvent OnTrustLevelChanged => onTrustLevelChanged;
+    public UnityEvent OnParanoiaLevelChanged => onParanoiaLevelChanged;
+    public UnityEvent OnContaminationLevelChanged => onContaminationLevelChanged;
+    public UnityEvent OnCasualtiesCountChanged => onCasualtiesCountChanged;
+    public UnityEvent OnFullContamination => onFullContamination;
 
     private void Awake()
     {
-        _onTrustLevelChanged = new UnityEvent();
-        _onParanoiaLevelChanged = new UnityEvent();
-        _onContaminationLevelChanged = new UnityEvent();
-        _onCasualtiesCountChanged = new UnityEvent();
-        _onFullContamination = new UnityEvent();
+        trustLevel = startingTrustLevel;
+        paranoiaLevel = startingParanoiaLevel;
+        contaminationLevel = startingContaminationLevel;
+        casualtiesCount = startingCasualtiesCount;
+        timeHandler = GetComponent<TimeHandler>();
+        onTrustLevelChanged = new UnityEvent();
+        onParanoiaLevelChanged = new UnityEvent();
+        onContaminationLevelChanged = new UnityEvent();
+        onCasualtiesCountChanged = new UnityEvent();
+        onFullContamination = new UnityEvent();
     }
 
     private void Start()
     {
         timeHandler.OnTimeChanged.AddListener(ApplyRandomContaminationVariation);
-        _trustLevel = startingTrustLevel;
-        _paranoiaLevel = startingParanoiaLevel;
-        _contaminationLevel = startingContaminationLevel;
-        _casualtiesCount = startingCasualtiesCount;
     }
 
     private void ApplyRandomContaminationVariation()
@@ -104,5 +104,13 @@ public class PopulationHandler : MonoBehaviour
         {
             ContaminationLevel += Random.Range(1, 10);
         }
+    }
+
+    public void AffectPopulation(ACardData data)
+    {
+        TrustLevel += data.Trust;
+        ParanoiaLevel += data.Paranoia;
+        ContaminationLevel += data.Contamination;
+        CasualtiesCount += data.Casualties;
     }
 }

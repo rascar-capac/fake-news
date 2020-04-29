@@ -3,78 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] [Range(0, 10f)] private float menuTransitionsTime = 1f;
-    [SerializeField] private TimeHandler timeHandler = null;
-    [SerializeField] private PopulationHandler populationHandler = null;
-    [SerializeField] private GameObject MainMenuPanel = null;
-    [SerializeField] private GameObject PauseMenuPanel = null;
-    [SerializeField] private GameObject GameOverPanel = null;
-    private UnityEvent _onGameEnded;
-    private bool _isGameRunning;
-    private int _finalScore;
-    private bool _isGameLost;
+    [SerializeField] private CanvasGroup mainMenuPanel = null;
+    [SerializeField] private CanvasGroup pauseMenuPanel = null;
+    [SerializeField] private CanvasGroup gameOverPanel = null;
+    private bool isGameRunning;
+    private int finalScore;
+    private bool isGameLost;
+    private TimeHandler timeHandler;
+    private PopulationHandler populationHandler;
+    public class GameEndedEvent : UnityEvent<bool, int> {}
+    private GameEndedEvent onGameEnded;
 
-    public UnityEvent OnGameEnded => _onGameEnded;
-    public bool IsGameRunning => _isGameRunning;
-    public int FinalScore => _finalScore;
-    public bool IsGameLost => _isGameLost;
+    public bool IsGameRunning => isGameRunning;
+    public GameEndedEvent OnGameEnded => onGameEnded;
 
     private void Awake()
     {
-        _onGameEnded = new UnityEvent();
-        _isGameRunning = false;
-        _isGameLost = false;
+        isGameRunning = false;
+        isGameLost = false;
+        timeHandler = GetComponent<TimeHandler>();
+        populationHandler = GetComponent<PopulationHandler>();
+        onGameEnded = new GameEndedEvent();
     }
 
     private void Start()
     {
+        gameOverPanel.gameObject.SetActive(false);
+        pauseMenuPanel.gameObject.SetActive(false);
         timeHandler.OnLastDayReached.AddListener(EndGame);
         populationHandler.OnFullContamination.AddListener(LoseGame);
-        GameOverPanel.SetActive(false);
-        PauseMenuPanel.SetActive(false);
     }
 
     public void StartGame()
     {
-        _isGameRunning = true;
-        CanvasGroup canvasGroup = MainMenuPanel.GetComponent<CanvasGroup>();
-        canvasGroup.interactable = false;
-        canvasGroup.LeanAlpha(0, menuTransitionsTime)
-                .setOnComplete(() => MainMenuPanel.SetActive(false));
+        isGameRunning = true;
+        mainMenuPanel.interactable = false;
+        mainMenuPanel.LeanAlpha(0, menuTransitionsTime)
+                .setOnComplete(() => mainMenuPanel.gameObject.SetActive(false));
     }
 
     public void PauseGame()
     {
-        _isGameRunning = false;
-        PauseMenuPanel.SetActive(true);
+        isGameRunning = false;
+        pauseMenuPanel.gameObject.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        _isGameRunning = true;
-        PauseMenuPanel.SetActive(false);
+        isGameRunning = true;
+        pauseMenuPanel.gameObject.SetActive(false);
     }
 
     private void LoseGame()
     {
-        _isGameLost = true;
+        isGameLost = true;
         EndGame();
     }
 
     private void EndGame()
     {
-        _isGameRunning = false;
-        OnGameEnded.Invoke();
-        GameOverPanel.SetActive(true);
-        CanvasGroup canvasGroup = GameOverPanel.GetComponent<CanvasGroup>();
-        canvasGroup.interactable = false;
-        canvasGroup.alpha = 0;
-        canvasGroup.LeanAlpha(1, menuTransitionsTime)
-                .setOnComplete(() => canvasGroup.interactable = true);
+        isGameRunning = false;
+        gameOverPanel.gameObject.SetActive(true);
+        gameOverPanel.interactable = false;
+        gameOverPanel.alpha = 0;
+        gameOverPanel.LeanAlpha(1, menuTransitionsTime)
+                .setOnComplete(() => gameOverPanel.interactable = true);
+        ComputeFinalScore();
+        OnGameEnded.Invoke(isGameLost, finalScore);
     }
 
     public void ResetGame()
@@ -90,6 +89,6 @@ public class GameManager : MonoBehaviour
 
     private void ComputeFinalScore()
     {
-        _finalScore = 0;
+        finalScore = 0;
     }
 }
