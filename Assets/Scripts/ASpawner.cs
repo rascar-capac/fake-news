@@ -6,7 +6,7 @@ public abstract class ASpawner<T, U> : MonoBehaviour
         where T : ADataInitializer<U>
         where U : ScriptableObject
 {
-    protected virtual T SpawnObject(SpawnableObject spawnableObject)
+    protected T SpawnObject(SpawnableObject spawnableObject)
     {
         T newObject = Instantiate(spawnableObject.Prefab, spawnableObject.Context);
         U data = PickRandomData(spawnableObject.DataDeck, spawnableObject.HasUniqueData);
@@ -31,14 +31,24 @@ public abstract class ASpawner<T, U> : MonoBehaviour
     {
         [SerializeField] private T prefab = null;
         [SerializeField] private Transform context = null;
-        [SerializeField] private List<U> dataDeck = null;
         [SerializeField] private bool hasUniqueData = false;
+        private List<U> dataDeck = new List<U>();
         private List<T> spawnedObjects = new List<T>();
 
         public T Prefab => prefab;
         public Transform Context => context;
-        public List<U> DataDeck => dataDeck;
         public bool HasUniqueData => hasUniqueData;
+        public List<U> DataDeck => dataDeck;
         public List<T> SpawnedObjects => spawnedObjects;
+
+        public void AddData(U newData)
+        {
+            dataDeck.Add(newData);
+        }
+
+        public void AddData(List<U> newData)
+        {
+            dataDeck.AddRange(newData);
+        }
     }
 }

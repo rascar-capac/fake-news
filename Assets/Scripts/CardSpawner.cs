@@ -7,50 +7,55 @@ public class CardSpawner : ASpawner<CardInitializer, ACardData>
     [SerializeField] private SpawnableCard postCard = null;
     [SerializeField] private SpawnableCard infoCard = null;
     private TimeHandler timeHandler;
+    private FileReader fileReader;
 
     private void Awake()
     {
         timeHandler = GetComponent<TimeHandler>();
+        fileReader = GetComponent<FileReader>();
     }
 
     private void Start()
     {
+        infoCard.AddData(fileReader.InfoData);
+        foreach(ACardData cardData in fileReader.PostData)
+        {
+            if(cardData.Code == "0")
+            {
+                postCard.AddData(cardData);
+            }
+        }
         timeHandler.OnTimeChanged.AddListener(TestSpawnProbabilities);
     }
 
     private void TestSpawnProbabilities()
     {
-        TestSpawnProbability(postCard);
-        TestSpawnProbability(infoCard);
+        TestSpawnProbability(postCard, false);
+        TestSpawnProbability(infoCard, true);
     }
 
-    private void TestSpawnProbability(SpawnableCard spawnableCard)
+    private void TestSpawnProbability(SpawnableCard spawnableCard, bool mustAddNewCards)
     {
         if(spawnableCard.DataDeck.Count > 0)
         {
             if(Random.value <= spawnableCard.CardSpawnProbability)
             {
-                SpawnObject(spawnableCard);
+                SpawnCard(spawnableCard, mustAddNewCards);
             }
         }
     }
 
-    protected override CardInitializer SpawnObject(SpawnableObject spawnableCard)
+    private CardInitializer SpawnCard(SpawnableCard spawnableCard, bool mustAddNewCards)
     {
         CardInitializer newCard = base.SpawnObject(spawnableCard);
-
-        foreach(PostData postData in newCard.Data.PostsToAdd)
+        if(mustAddNewCards)
         {
-            if(!postCard.DataDeck.Contains(postData))
+            foreach(ACardData cardData in fileReader.PostData)
             {
-                postCard.DataDeck.Add(postData);
-            }
-        }
-        foreach(InfoData infoData in newCard.Data.InfosToAdd)
-        {
-            if(!infoCard.DataDeck.Contains(infoData))
-            {
-                infoCard.DataDeck.Add(infoData);
+                if(cardData.Code == newCard.Data.Code)
+                {
+                    postCard.AddData(cardData);
+                }
             }
         }
 
