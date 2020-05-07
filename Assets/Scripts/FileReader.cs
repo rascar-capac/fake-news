@@ -79,6 +79,33 @@ public class FileReader : MonoBehaviour
             rawString = ReplaceTextBetween("(", ")", PickRandom(options), rawString);
         }
 
+        char[] strongPunctuation = new char[] {'.', '!', '?'};
+        int strongPunctuationIndex = rawString.IndexOfAny(strongPunctuation);
+        bool isEndOfString = false;
+        while(strongPunctuationIndex > 0 && !isEndOfString)
+        {
+            bool isCharFound = false;
+            while(!isCharFound && !isEndOfString)
+            {
+                strongPunctuationIndex++;
+                isEndOfString = strongPunctuationIndex >= rawString.Length;
+                if(!isEndOfString && rawString[strongPunctuationIndex] != ' ')
+                {
+                    rawString =
+                            rawString.Substring(0, strongPunctuationIndex) +
+                            rawString[strongPunctuationIndex].ToString().ToUpper() +
+                            rawString.Substring(strongPunctuationIndex + 1);
+                    isCharFound = true;
+                }
+            }
+            if(!isEndOfString)
+            {
+                strongPunctuationIndex = rawString.IndexOfAny(strongPunctuation, strongPunctuationIndex);
+            }
+        }
+
+        rawString = rawString[0].ToString().ToUpper() + rawString.Substring(1);
+
         return rawString;
     }
 

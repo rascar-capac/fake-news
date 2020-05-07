@@ -9,7 +9,7 @@ advice_intro
 0 + LE VIRUS VA TOUS NOUS TUER, j’ai trop peur !
 1A + [§credit_giver§(,- :) ]le virus est très volatile[(,- :-.) §advice_intro§(,- :) restez chez vous] !!
 1A - [§credit_giver§(,- :) ]le virus n’est pas très volatile.
-1A + [§advice_intro§(,- :) ]restez chez vous ! (§credit_giver§(,- :) le virus est très volatile-le virus est très volatile, §credit_giver§-le virus est très volatile).
+1A + [§advice_intro§(,- :) ]restez chez vous ! (§credit_giver§ : le virus est très volatile-le virus est très volatile, §credit_giver§-le virus est très volatile).
 1A - [§credit_giver§(,- :) ]le virus n’est pas très volatile.
 1A + OMG en faite le virus il et super légé du cou fo faire tro gaff kan on sort sur la vi dma mere jsors plu mdr
 1A - ba en faite sa va le virus il et lour dan l’aire donc izi on risk pas de crevé lol
