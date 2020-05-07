@@ -51,11 +51,12 @@ public class FileReader : MonoBehaviour
 
     private ACardData CreateData(string template, Dictionary<string, string[]> categories, string text)
     {
-        string[] content = template.Split(new char[]{' '}, 3);
+        string[] content = template.Split(new char[]{' '}, 4);
         ACardData newData = ScriptableObject.CreateInstance<ACardData>();
         newData.Code = content[0];
         newData.IsAffirmative = content[1] == "+" ? true : false;
-        newData.Text = Format(content[2], categories);
+        newData.Tag = content[2];
+        newData.Text = Format(content[3], categories);
         return newData;
     }
 

@@ -6,33 +6,33 @@ credit_giver_prevention
 advice_intro
 
 #template
-0 + LE VIRUS VA TOUS NOUS TUER, j’ai trop peur !
-1A + [§credit_giver§(,- :) ]le virus est très volatile[(,- :-.) §advice_intro§(,- :) restez chez vous] !!
-1A - [§credit_giver§(,- :) ]le virus n’est pas très volatile.
-1A + [§advice_intro§(,- :) ]restez chez vous ! (§credit_giver§ : le virus est très volatile-le virus est très volatile, §credit_giver§-le virus est très volatile).
-1A - [§credit_giver§(,- :) ]le virus n’est pas très volatile.
-1A + OMG en faite le virus il et super légé du cou fo faire tro gaff kan on sort sur la vi dma mere jsors plu mdr
-1A - ba en faite sa va le virus il et lour dan l’aire donc izi on risk pas de crevé lol
-1A + le virus étant d’une masse moléculaire peu élevée, il aura tendance à tomber à rester en suspension dans l’air. Vous restez donc fortement exposé même avec une distanciation sociale.
-1A - le virus étant d’une masse moléculaire très élevée, il aura tendance à tomber très vite au sol. Vous n’êtes donc plus exposé en prenant 2m de distanciation sociale.
-1B + ne caressez plus vos animaux, ils vous refileraient le virus.[ §credit_giver§…]
-1B - caressez vos animaux sans crainte, ils ne vous refileront pas le virus.[ §credit_giver§…]
-1B + [§credit_giver§(,- :) ]il faut arrêter de manger de la viande. C’est le premier facteur de contraction du virus.
-1B - [§credit_giver§(,- :) ]ça ne sert à rien de s’arrêter de manger de la viande. Les animaux ne sont pas du tout atteints par le virus.
-1B + mon voisin a contracté le virus suite à la morsure de son chien !
-1B - mon voisin a été mordu par son chien, et il n’a rien eu ! Aucun problème avec les animaux…
-1C + à bas les antennes 5G ! [§credit_giver§(,- :) ]elles sont responsables de cette épidémie !!!!!!
-1C - arrêtez de critiquer les antennes 5G, [§credit_giver§(,- :) ]elles n’ont rien à voir avec cette épidémie !!!!!!
-2A + si vous faites caca rose, allez à l’hôpital[(,- :-.) §credit_giver§] !
-2A - aucune raison de s’inquiéter si vous faites caca rose[(,- :-.) §credit_giver§] !
-2B + si vous avez envie d’éternuer, inquiétez-vous ![ §credit_giver§.]
-2B - si vous avez envie d’éternuer, pas d’inquiétude, il n’y aucun danger ![ §credit_giver§.]
-2C + je viens d’emmener ma mère à l’hosto, elle bavait de ouf. J’avais lu quelque part que c’était un symptôme de contamination, donc j’ai pas hésité.
-2C - ma mère arrête pas de baver depuis ce matin, c’est trop drôle. Elle dit que c’est le virus, moi je lui dis d’arrêter sa parano haha.
-3A + [§credit_giver_treatment§ : ]il suffit de boire un demi-litre de glyphosate pour guérir.
-3A - boire du glyphosate n’est pas la solution que vous attendez.
-3A + en fait l’histoire du glyphosate c’était des conneries, moi j’y croyais trop…
-3A - c’est trop vrai l’histoire du glyphosate, ça marche et tout…
+0 + TEMP LE VIRUS VA TOUS NOUS TUER, j’ai trop peur !
+1A + TEMP [§credit_giver§(,- :) ]le virus est très volatile[(,- :-.) §advice_intro§(,- :) restez chez vous] !!
+1A - TEMP [§credit_giver§(,- :) ]le virus n’est pas très volatile.
+1A + TEMP [§advice_intro§(,- :) ]restez chez vous ! (§credit_giver§ : le virus est très volatile-le virus est très volatile, §credit_giver§-le virus est très volatile).
+1A - TEMP [§credit_giver§(,- :) ]le virus n’est pas très volatile.
+1A + TEMP OMG en faite le virus il et super légé du cou fo faire tro gaff kan on sort sur la vi dma mere jsors plu mdr
+1A - TEMP ba en faite sa va le virus il et lour dan l’aire donc izi on risk pas de crevé lol
+1A + TEMP le virus étant d’une masse moléculaire peu élevée, il aura tendance à tomber à rester en suspension dans l’air. Vous restez donc fortement exposé même avec une distanciation sociale.
+1A - TEMP le virus étant d’une masse moléculaire très élevée, il aura tendance à tomber très vite au sol. Vous n’êtes donc plus exposé en prenant 2m de distanciation sociale.
+1B + TEMP ne caressez plus vos animaux, ils vous refileraient le virus.[ §credit_giver§…]
+1B - TEMP caressez vos animaux sans crainte, ils ne vous refileront pas le virus.[ §credit_giver§…]
+1B + TEMP [§credit_giver§(,- :) ]il faut arrêter de manger de la viande. C’est le premier facteur de contraction du virus.
+1B - TEMP [§credit_giver§(,- :) ]ça ne sert à rien de s’arrêter de manger de la viande. Les animaux ne sont pas du tout atteints par le virus.
+1B + TEMP mon voisin a contracté le virus suite à la morsure de son chien !
+1B - TEMP mon voisin a été mordu par son chien, et il n’a rien eu ! Aucun problème avec les animaux…
+1C + TEMP à bas les antennes 5G ! [§credit_giver§(,- :) ]elles sont responsables de cette épidémie !!!!!!
+1C - TEMP arrêtez de critiquer les antennes 5G, [§credit_giver§(,- :) ]elles n’ont rien à voir avec cette épidémie !!!!!!
+2A + TEMP si vous faites caca rose, allez à l’hôpital[(,- :-.) §credit_giver§] !
+2A - TEMP aucune raison de s’inquiéter si vous faites caca rose[(,- :-.) §credit_giver§] !
+2B + TEMP si vous avez envie d’éternuer, inquiétez-vous ![ §credit_giver§.]
+2B - TEMP si vous avez envie d’éternuer, pas d’inquiétude, il n’y aucun danger ![ §credit_giver§.]
+2C + TEMP je viens d’emmener ma mère à l’hosto, elle bavait de ouf. J’avais lu quelque part que c’était un symptôme de contamination, donc j’ai pas hésité.
+2C - TEMP ma mère arrête pas de baver depuis ce matin, c’est trop drôle. Elle dit que c’est le virus, moi je lui dis d’arrêter sa parano haha.
+3A + TEMP [§credit_giver_treatment§ : ]il suffit de boire un demi-litre de glyphosate pour guérir.
+3A - TEMP boire du glyphosate n’est pas la solution que vous attendez.
+3A + TEMP en fait l’histoire du glyphosate c’était des conneries, moi j’y croyais trop…
+3A - TEMP c’est trop vrai l’histoire du glyphosate, ça marche et tout…
 
 4A + un spécialiste parle : « j’ai découvert un nouveau moyen de contrer le virus : il suffit de se boucher l’anus avec un plug. »
 4A - un spécialiste parle : « j’ai découvert un nouveau moyen de contrer le virus : il suffit de se boucher l’anus avec un plug. »

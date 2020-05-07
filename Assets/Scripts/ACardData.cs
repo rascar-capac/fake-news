@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ACardData : ScriptableObject
 {
-    private string text = null;
-    private string code = null;
-    private bool isAffirmative = true;
+    private string text;
+    private string code;
+    private string tag;
+    private bool isAffirmative;
     private int trust = 0;
     private int paranoia = 0;
     private int contamination = 0;
@@ -14,6 +15,7 @@ public class ACardData : ScriptableObject
 
     public string Text { get; set; }
     public string Code { get; set; }
+    public string Tag { get; set; }
     public bool IsAffirmative { get; set; }
     public int Trust => trust;
     public int Paranoia => paranoia;

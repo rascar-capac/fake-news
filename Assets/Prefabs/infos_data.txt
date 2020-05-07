@@ -2,35 +2,35 @@
 template
 
 #template
-1A + [MED] le virus est extrêmement volatile
-1A - [MED] le virus est très dense
-1D + [MED] le virus se contracte par les muqueuses
-1D - [MED] le virus ne se contracte pas par les muqueuses
-2A + [MED] symptôme détecté - les selles des personnes infectées sont d’un rose bonbon éclatant
-2A - [MED] les selles de couleur rose bonbon ne sont pas un symptôme pertinent
-2C + [MED] nouveau symptôme découvert - baver abondamment est un signe de contamination
-2C - [MED] baver abondamment n’est pas un signe de contamination
-3A + [MED] le glyphosate est possiblement un traitement efficace
-3A - [MED] le glyphosate n’est définitivement pas un traitement efficace
-3B + [MED] la guérison par l’hayahuasca est actuellement étudiée en laboratoire
-3B - [MED] l’étude d’une guérison par l’hayahuasca est en fait une rumeur infondée
+1A + MED le virus est extrêmement volatile
+1A - MED le virus est très dense
+1D + MED le virus se contracte par les muqueuses
+1D - MED le virus ne se contracte pas par les muqueuses
+2A + MED symptôme détecté - les selles des personnes infectées sont d’un rose bonbon éclatant
+2A - MED les selles de couleur rose bonbon ne sont pas un symptôme pertinent
+2C + MED nouveau symptôme découvert - baver abondamment est un signe de contamination
+2C - MED baver abondamment n’est pas un signe de contamination
+3A + MED le glyphosate est possiblement un traitement efficace
+3A - MED le glyphosate n’est définitivement pas un traitement efficace
+3B + MED la guérison par l’hayahuasca est actuellement étudiée en laboratoire
+3B - MED l’étude d’une guérison par l’hayahuasca est en fait une rumeur infondée
 
-4A + [MED] un verre d’ail pressé et de vinaigre chaque matin permet de limiter les chances de contraction du virus
-4A - [MED] un verre d’ail pressé et de vinaigre chaque matin permet de limiter les chances de contraction du virus
-5A + [GOV] mise en place d’un couvre-feu - plus de sorties après 20h 
-5A - [GOV] mise en place d’un couvre-feu - plus de sorties après 20h 
-5B + [GOV] confinement appliqué à toute la population jusqu’à nouvel ordre - les exceptions sont rares
-5B - [GOV] confinement appliqué à toute la population jusqu’à nouvel ordre - les exceptions sont rares
-5D + [GOV] frontières fermées jusqu’à nouvel ordre
-5D - [GOV] frontières fermées jusqu’à nouvel ordre
-5E + [GOV] niveau de sécurité maximale - loi martiale en vigueur
-5E - [GOV] niveau de sécurité maximale - loi martiale en vigueur
-6A + [PRESSE] stock de masques vandalisé au centre de distribution principal
-6A - [PRESSE] stock de masques vandalisé au centre de distribution principal
-6B + [PRESSE] évasion massive de la plus grande prison du pays
-6B - [PRESSE] évasion massive de la plus grande prison du pays
-6C + [PRESSE] une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
-6C - [PRESSE] une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
+4A + MED un verre d’ail pressé et de vinaigre chaque matin permet de limiter les chances de contraction du virus
+4A - MED un verre d’ail pressé et de vinaigre chaque matin permet de limiter les chances de contraction du virus
+5A + GOV mise en place d’un couvre-feu - plus de sorties après 20h 
+5A - GOV mise en place d’un couvre-feu - plus de sorties après 20h 
+5B + GOV confinement appliqué à toute la population jusqu’à nouvel ordre - les exceptions sont rares
+5B - GOV confinement appliqué à toute la population jusqu’à nouvel ordre - les exceptions sont rares
+5D + GOV frontières fermées jusqu’à nouvel ordre
+5D - GOV frontières fermées jusqu’à nouvel ordre
+5E + GOV niveau de sécurité maximale - loi martiale en vigueur
+5E - GOV niveau de sécurité maximale - loi martiale en vigueur
+6A + PRESSE stock de masques vandalisé au centre de distribution principal
+6A - PRESSE stock de masques vandalisé au centre de distribution principal
+6B + PRESSE évasion massive de la plus grande prison du pays
+6B - PRESSE évasion massive de la plus grande prison du pays
+6C + PRESSE une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
+6C - PRESSE une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
 
 codes:
 1 transmission
