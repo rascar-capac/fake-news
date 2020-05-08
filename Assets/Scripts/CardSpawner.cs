@@ -55,6 +55,10 @@ public class CardSpawner : ASpawner<CardInitializer, ACardData>
                 if(cardData.Code == newCard.Data.Code)
                 {
                     postCard.AddData(cardData);
+                    if(cardData.IsAffirmative != newCard.Data.IsAffirmative)
+                    {
+                        cardData.IsFake = true;
+                    }
                 }
             }
         }

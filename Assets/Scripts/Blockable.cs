@@ -26,6 +26,7 @@ public class Blockable : MonoBehaviour
     {
         if(!isProcessed)
         {
+            cardInitializer.AffectTrust(true);
             cardButton.interactable = false;
             StopCoroutine(expirationCoroutine);
             isProcessed = true;
@@ -40,7 +41,8 @@ public class Blockable : MonoBehaviour
 
     public void ValidatePost()
     {
-        cardInitializer.AffectPopulation();
+        cardInitializer.AffectContamination();
+        cardInitializer.AffectTrust(false);
         ColorBlock expiredColors = cardButton.colors;
         expiredColors.disabledColor = expiredColor;
         cardButton.colors = expiredColors;

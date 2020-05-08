@@ -8,6 +8,7 @@ public class ACardData : ScriptableObject
     private string code;
     private string tag;
     private bool isAffirmative;
+    private bool isFake;
     private int trust = 0;
     private int paranoia = 0;
     private int contamination = 0;
@@ -17,6 +18,7 @@ public class ACardData : ScriptableObject
     public string Code { get; set; }
     public string Tag { get; set; }
     public bool IsAffirmative { get; set; }
+    public bool IsFake { get; set; }
     public int Trust => trust;
     public int Paranoia => paranoia;
     public int Contamination => contamination;

@@ -7,8 +7,11 @@ using TMPro;
 public class CardInitializer : ADataInitializer<ACardData>
 {
     [SerializeField] [Range(0, 10f)] private float timeToSpawn = 1f;
+    [SerializeField] private int trustImpact = 10;
+    [SerializeField] private int contaminationImpact = 10;
     [SerializeField] private bool hasInstantEffect = false;
     [SerializeField] private TextMeshProUGUI text = null;
+    private bool isFake;
     private PopulationHandler populationHandler;
 
     protected override void Awake()
@@ -23,7 +26,7 @@ public class CardInitializer : ADataInitializer<ACardData>
 
         if(hasInstantEffect)
         {
-            AffectPopulation();
+            AffectContamination();
         }
 
         Display();
@@ -38,9 +41,21 @@ public class CardInitializer : ADataInitializer<ACardData>
                 .setOnComplete(() => GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint());
     }
 
-    public void AffectPopulation()
+    public void AffectTrust(bool isBlocked)
     {
-        populationHandler.AffectPopulation(data);
+        if(isBlocked)
+        {
+            populationHandler.TrustLevel += data.IsFake ? trustImpact : -trustImpact;
+        }
+        else
+        {
+            populationHandler.TrustLevel += data.IsFake ? -trustImpact : trustImpact;
+        }
+    }
+
+    public void AffectContamination()
+    {
+        populationHandler.ContaminationLevel += data.IsFake ? contaminationImpact : -contaminationImpact;
     }
 
     private void Display()

@@ -57,6 +57,7 @@ public class FileReader : MonoBehaviour
         newData.IsAffirmative = content[1] == "+" ? true : false;
         newData.Tag = content[2];
         newData.Text = Format(content[3], categories);
+        newData.IsFake = false;
         return newData;
     }
 

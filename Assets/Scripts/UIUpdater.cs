@@ -6,9 +6,9 @@ using TMPro;
 public class UIUpdater : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI trust = null;
-    [SerializeField] private TextMeshProUGUI paranoia = null;
+    // [SerializeField] private TextMeshProUGUI paranoia = null;
     [SerializeField] private TextMeshProUGUI contamination = null;
-    [SerializeField] private TextMeshProUGUI casualties = null;
+    // [SerializeField] private TextMeshProUGUI casualties = null;
     [SerializeField] private TextMeshProUGUI time = null;
     [SerializeField] private TextMeshProUGUI gameOverTitle = null;
     [SerializeField] private TextMeshProUGUI finalScore = null;
@@ -33,9 +33,11 @@ public class UIUpdater : MonoBehaviour
         gameManager.OnGameEnded.AddListener(UpdateGameOverScreen);
         timeHandler.OnTimeChanged.AddListener(UpdateTime);
         populationHandler.OnTrustLevelChanged.AddListener(UpdateTrustLevel);
-        populationHandler.OnParanoiaLevelChanged.AddListener(UpdateParanoiaLevel);
+        // populationHandler.OnParanoiaLevelChanged.AddListener(UpdateParanoiaLevel);
         populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
-        populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
+        // populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
+        trust.SetText(populationHandler.TrustLevel.ToString());
+        contamination.SetText(populationHandler.ContaminationLevel.ToString());
     }
 
     private void UpdateTrustLevel()
@@ -48,15 +50,15 @@ public class UIUpdater : MonoBehaviour
         trust.SetText(populationHandler.TrustLevel.ToString());
     }
 
-    private void UpdateParanoiaLevel()
-    {
-        LeanTween.cancel(paranoia.gameObject);
-        paranoia.color = updateColor;
-        // paranoia.fontSize += 2;
-        LeanTween.value(paranoia.gameObject, paranoia.color, initialFontColor, 2f)
-                .setOnUpdateColor((Color value) => paranoia.color = value);
-        paranoia.SetText(populationHandler.ParanoiaLevel.ToString());
-    }
+    // private void UpdateParanoiaLevel()
+    // {
+    //     LeanTween.cancel(paranoia.gameObject);
+    //     paranoia.color = updateColor;
+    //     // paranoia.fontSize += 2;
+    //     LeanTween.value(paranoia.gameObject, paranoia.color, initialFontColor, 2f)
+    //             .setOnUpdateColor((Color value) => paranoia.color = value);
+    //     paranoia.SetText(populationHandler.ParanoiaLevel.ToString());
+    // }
 
     private void UpdateContaminationLevel()
     {
@@ -68,15 +70,15 @@ public class UIUpdater : MonoBehaviour
         contamination.SetText(populationHandler.ContaminationLevel.ToString());
     }
 
-    private void UpdateCasualtiesCount()
-    {
-        LeanTween.cancel(casualties.gameObject);
-        casualties.color = updateColor;
-        // casualties.fontSize += 2;
-        LeanTween.value(casualties.gameObject, casualties.color, initialFontColor, 2f)
-                .setOnUpdateColor((Color value) => casualties.color = value);
-        casualties.SetText(populationHandler.CasualtiesCount.ToString());
-    }
+    // private void UpdateCasualtiesCount()
+    // {
+    //     LeanTween.cancel(casualties.gameObject);
+    //     casualties.color = updateColor;
+    //     // casualties.fontSize += 2;
+    //     LeanTween.value(casualties.gameObject, casualties.color, initialFontColor, 2f)
+    //             .setOnUpdateColor((Color value) => casualties.color = value);
+    //     casualties.SetText(populationHandler.CasualtiesCount.ToString());
+    // }
 
     private void UpdateTime()
     {
