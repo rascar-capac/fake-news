@@ -9,35 +9,14 @@ public class CardInitializer : ADataInitializer<ACardData>
     [SerializeField] [Range(0, 10f)] private float timeToSpawn = 1f;
     [SerializeField] private int trustImpact = 10;
     // [SerializeField] private int contaminationImpact = 10;
-    // [SerializeField] private bool hasInstantEffect = false;
+    [SerializeField] private bool hasInstantEffect = false;
     [SerializeField] private TextMeshProUGUI text = null;
     private PopulationHandler populationHandler;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        populationHandler = FindObjectOfType<PopulationHandler>();
-    }
 
     public override void Init(ACardData data)
     {
         base.Init(data);
-
-        // if(hasInstantEffect)
-        // {
-        //     AffectContamination();
-        // }
-
         Display();
-    }
-
-    public IEnumerator SlideSmooth()
-    {
-        yield return null;
-        LayoutElement layoutElement = GetComponent<LayoutElement>();
-        LeanTween.value(0, GetComponent<LayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
-                .setOnUpdate((float value) => layoutElement.preferredHeight = value)
-                .setOnComplete(() => GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint());
     }
 
     public void AffectTrust(bool isBlocked)
@@ -57,11 +36,37 @@ public class CardInitializer : ADataInitializer<ACardData>
     //     populationHandler.ContaminationLevel += data.IsFake ? contaminationImpact : -contaminationImpact;
     // }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        populationHandler = FindObjectOfType<PopulationHandler>();
+    }
+
+    private IEnumerator SlideSmooth()
+    {
+        yield return null;
+        LayoutElement layoutElement = GetComponent<LayoutElement>();
+        LeanTween.value(0, GetComponent<LayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
+                .setOnUpdate((float value) => layoutElement.preferredHeight = value)
+                .setOnComplete(delegate() {
+                    GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint();
+                    ApplyInstantEffect();
+                });
+    }
+
     private void Display()
     {
         text.SetText(data.Text);
         transform.SetAsFirstSibling();
         GetComponent<CanvasGroup>().alpha = 0;
         StartCoroutine(SlideSmooth());
+    }
+
+    private void ApplyInstantEffect()
+    {
+        if(hasInstantEffect)
+        {
+            // AffectContamination();
+        }
     }
 }
