@@ -11,7 +11,7 @@ public class UIUpdater : MonoBehaviour
     // [SerializeField] private TextMeshProUGUI casualties = null;
     [SerializeField] private TextMeshProUGUI time = null;
     [SerializeField] private TextMeshProUGUI gameOverTitle = null;
-    [SerializeField] private TextMeshProUGUI finalScore = null;
+    [SerializeField] private GameObject finalScore = null;
     [SerializeField] private Color updateColor = Color.red;
     [SerializeField] private string gameLostText = "Population décimée";
     [SerializeField] private string gameWonText = "Épidémie surmontée";
@@ -37,6 +37,7 @@ public class UIUpdater : MonoBehaviour
         // populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
         // populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
         trust.SetText(populationHandler.TrustLevel.ToString());
+        time.SetText(timeHandler.DayCount.ToString());
         // contamination.SetText(populationHandler.ContaminationLevel.ToString());
     }
 
@@ -92,6 +93,13 @@ public class UIUpdater : MonoBehaviour
     private void UpdateGameOverScreen(bool isGameLost, int finalScore)
     {
         this.gameOverTitle.SetText(isGameLost ? gameLostText : gameWonText);
-        this.finalScore.SetText(finalScore.ToString());
+        if(isGameLost)
+        {
+            this.finalScore.SetActive(false);
+        }
+        else
+        {
+            this.finalScore.GetComponentsInChildren<TextMeshProUGUI>()[1].SetText(finalScore.ToString());
+        }
     }
 }

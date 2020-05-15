@@ -90,6 +90,6 @@ public class GameManager : MonoBehaviour
 
     private void ComputeFinalScore()
     {
-        finalScore = 0;
+        finalScore = populationHandler.TrustLevel;
     }
 }

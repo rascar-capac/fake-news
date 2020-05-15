@@ -29,7 +29,10 @@ public class PopulationHandler : MonoBehaviour
         {
             if(value != trustLevel)
             {
-                trustLevel = Mathf.Clamp(value, 0, 100);
+                if(trustLevel < 0)
+                {
+                    trustLevel = 0;
+                }
                 if(trustLevel == 0)
                 {
                     onTrustNull.Invoke();
