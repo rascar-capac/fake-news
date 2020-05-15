@@ -35,7 +35,7 @@ public class CardInitializer : ADataInitializer<ACardData>
     {
         yield return null;
         LayoutElement layoutElement = GetComponent<LayoutElement>();
-        LeanTween.value(0, GetComponent<HorizontalLayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
+        LeanTween.value(0, GetComponent<LayoutGroup>().preferredHeight, timeToSpawn / 2).setEaseOutQuint()
                 .setOnUpdate((float value) => layoutElement.preferredHeight = value)
                 .setOnComplete(() => GetComponent<CanvasGroup>().LeanAlpha(1, timeToSpawn / 2).setEaseOutQuint());
     }
