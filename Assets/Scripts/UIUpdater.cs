@@ -7,7 +7,7 @@ public class UIUpdater : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI trust = null;
     // [SerializeField] private TextMeshProUGUI paranoia = null;
-    [SerializeField] private TextMeshProUGUI contamination = null;
+    // [SerializeField] private TextMeshProUGUI contamination = null;
     // [SerializeField] private TextMeshProUGUI casualties = null;
     [SerializeField] private TextMeshProUGUI time = null;
     [SerializeField] private TextMeshProUGUI gameOverTitle = null;
@@ -34,10 +34,10 @@ public class UIUpdater : MonoBehaviour
         timeHandler.OnTimeChanged.AddListener(UpdateTime);
         populationHandler.OnTrustLevelChanged.AddListener(UpdateTrustLevel);
         // populationHandler.OnParanoiaLevelChanged.AddListener(UpdateParanoiaLevel);
-        populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
+        // populationHandler.OnContaminationLevelChanged.AddListener(UpdateContaminationLevel);
         // populationHandler.OnCasualtiesCountChanged.AddListener(UpdateCasualtiesCount);
         trust.SetText(populationHandler.TrustLevel.ToString());
-        contamination.SetText(populationHandler.ContaminationLevel.ToString());
+        // contamination.SetText(populationHandler.ContaminationLevel.ToString());
     }
 
     private void UpdateTrustLevel()
@@ -60,15 +60,15 @@ public class UIUpdater : MonoBehaviour
     //     paranoia.SetText(populationHandler.ParanoiaLevel.ToString());
     // }
 
-    private void UpdateContaminationLevel()
-    {
-        LeanTween.cancel(contamination.gameObject);
-        contamination.color = updateColor;
-        // contamination.fontSize += 2;
-        LeanTween.value(contamination.gameObject, contamination.color, initialFontColor, 2f)
-                .setOnUpdateColor((Color value) => contamination.color = value);
-        contamination.SetText(populationHandler.ContaminationLevel.ToString());
-    }
+    // private void UpdateContaminationLevel()
+    // {
+    //     LeanTween.cancel(contamination.gameObject);
+    //     contamination.color = updateColor;
+    //     // contamination.fontSize += 2;
+    //     LeanTween.value(contamination.gameObject, contamination.color, initialFontColor, 2f)
+    //             .setOnUpdateColor((Color value) => contamination.color = value);
+    //     contamination.SetText(populationHandler.ContaminationLevel.ToString());
+    // }
 
     // private void UpdateCasualtiesCount()
     // {

@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(false);
         pauseMenuPanel.gameObject.SetActive(false);
         timeHandler.OnLastDayReached.AddListener(EndGame);
-        populationHandler.OnFullContamination.AddListener(LoseGame);
+        // populationHandler.OnFullContamination.AddListener(LoseGame);
+        populationHandler.OnTrustNull.AddListener(LoseGame);
     }
 
     public void StartGame()

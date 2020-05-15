@@ -8,10 +8,9 @@ public class CardInitializer : ADataInitializer<ACardData>
 {
     [SerializeField] [Range(0, 10f)] private float timeToSpawn = 1f;
     [SerializeField] private int trustImpact = 10;
-    [SerializeField] private int contaminationImpact = 10;
-    [SerializeField] private bool hasInstantEffect = false;
+    // [SerializeField] private int contaminationImpact = 10;
+    // [SerializeField] private bool hasInstantEffect = false;
     [SerializeField] private TextMeshProUGUI text = null;
-    private bool isFake;
     private PopulationHandler populationHandler;
 
     protected override void Awake()
@@ -24,10 +23,10 @@ public class CardInitializer : ADataInitializer<ACardData>
     {
         base.Init(data);
 
-        if(hasInstantEffect)
-        {
-            AffectContamination();
-        }
+        // if(hasInstantEffect)
+        // {
+        //     AffectContamination();
+        // }
 
         Display();
     }
@@ -53,10 +52,10 @@ public class CardInitializer : ADataInitializer<ACardData>
         }
     }
 
-    public void AffectContamination()
-    {
-        populationHandler.ContaminationLevel += data.IsFake ? contaminationImpact : -contaminationImpact;
-    }
+    // public void AffectContamination()
+    // {
+    //     populationHandler.ContaminationLevel += data.IsFake ? contaminationImpact : -contaminationImpact;
+    // }
 
     private void Display()
     {

@@ -41,7 +41,7 @@ public class Blockable : MonoBehaviour
 
     public void ValidatePost()
     {
-        cardInitializer.AffectContamination();
+        // cardInitializer.AffectContamination();
         cardInitializer.AffectTrust(false);
         ColorBlock expiredColors = cardButton.colors;
         expiredColors.disabledColor = expiredColor;
