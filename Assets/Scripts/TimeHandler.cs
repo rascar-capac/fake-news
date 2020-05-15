@@ -5,14 +5,6 @@ using UnityEngine.Events;
 
 public class TimeHandler : MonoBehaviour
 {
-    [SerializeField] [Range(0, 10f)] private float dayPeriod = 1f;
-    [SerializeField] private int gameDuration = 100;
-    private int dayCount;
-    private float timer;
-    private GameManager gameManager;
-    private UnityEvent onTimeChanged;
-    private UnityEvent onLastDayReached;
-
     public int DayCount
     {
         get => dayCount;
@@ -28,6 +20,14 @@ public class TimeHandler : MonoBehaviour
     }
     public UnityEvent OnTimeChanged => onTimeChanged;
     public UnityEvent OnLastDayReached => onLastDayReached;
+
+    [SerializeField] [Range(0, 10f)] private float dayPeriod = 1f;
+    [SerializeField] private int gameDuration = 100;
+    private int dayCount;
+    private float timer;
+    private GameManager gameManager;
+    private UnityEvent onTimeChanged;
+    private UnityEvent onLastDayReached;
 
     private void Awake()
     {

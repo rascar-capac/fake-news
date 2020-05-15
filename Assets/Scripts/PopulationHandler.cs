@@ -5,23 +5,6 @@ using UnityEngine.Events;
 
 public class PopulationHandler : MonoBehaviour
 {
-    [SerializeField] [Range(0, 100)] private int startingTrustLevel = 0;
-    // [SerializeField] [Range(0, 100)] private int startingParanoiaLevel = 0;
-    // [SerializeField] [Range(0, 100)] private int startingContaminationLevel = 0;
-    // [SerializeField] [Range(0, 100)] private int startingCasualtiesCount = 0;
-    // [SerializeField] [Range(0, 1f)] private float randomContaminationVariationProbability = 0.1f;
-    private int trustLevel;
-    // private int paranoiaLevel;
-    // private int contaminationLevel;
-    // private int casualtiesCount;
-    private TimeHandler timeHandler;
-    private UnityEvent onTrustLevelChanged;
-    // private UnityEvent onParanoiaLevelChanged;
-    // private UnityEvent onContaminationLevelChanged;
-    // private UnityEvent onCasualtiesCountChanged;
-    // private UnityEvent onFullContamination;
-    private UnityEvent onTrustNull;
-
     public int TrustLevel
     {
         get => trustLevel;
@@ -87,6 +70,23 @@ public class PopulationHandler : MonoBehaviour
     // public UnityEvent OnCasualtiesCountChanged => onCasualtiesCountChanged;
     // public UnityEvent OnFullContamination => onFullContamination;
     public UnityEvent OnTrustNull => onTrustNull;
+
+    [SerializeField] [Range(0, 100)] private int startingTrustLevel = 0;
+    // [SerializeField] [Range(0, 100)] private int startingParanoiaLevel = 0;
+    // [SerializeField] [Range(0, 100)] private int startingContaminationLevel = 0;
+    // [SerializeField] [Range(0, 100)] private int startingCasualtiesCount = 0;
+    // [SerializeField] [Range(0, 1f)] private float randomContaminationVariationProbability = 0.1f;
+    private int trustLevel;
+    // private int paranoiaLevel;
+    // private int contaminationLevel;
+    // private int casualtiesCount;
+    private TimeHandler timeHandler;
+    private UnityEvent onTrustLevelChanged;
+    // private UnityEvent onParanoiaLevelChanged;
+    // private UnityEvent onContaminationLevelChanged;
+    // private UnityEvent onCasualtiesCountChanged;
+    // private UnityEvent onFullContamination;
+    private UnityEvent onTrustNull;
 
     private void Awake()
     {

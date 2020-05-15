@@ -13,13 +13,15 @@ public class Blockable : MonoBehaviour
     private IEnumerator expirationCoroutine;
     private bool isProcessed;
 
-    public void Awake()
+    public void ValidatePost()
     {
-        cardInitializer = GetComponent<CardInitializer>();
-        cardButton = GetComponent<Button>();
-        expirationCoroutine = WaitForExpiration();
-        StartCoroutine(expirationCoroutine);
-        isProcessed = false;
+        // cardInitializer.AffectContamination();
+        cardInitializer.AffectTrust(false);
+        ColorBlock expiredColors = cardButton.colors;
+        expiredColors.disabledColor = expiredColor;
+        cardButton.colors = expiredColors;
+        cardButton.interactable = false;
+        isProcessed = true;
     }
 
     public void BlockPost()
@@ -33,20 +35,18 @@ public class Blockable : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitForExpiration()
+    private void Awake()
+    {
+        cardInitializer = GetComponent<CardInitializer>();
+        cardButton = GetComponent<Button>();
+        expirationCoroutine = WaitForExpiration();
+        StartCoroutine(expirationCoroutine);
+        isProcessed = false;
+    }
+
+    private IEnumerator WaitForExpiration()
     {
         yield return new WaitForSeconds(expirationDelay);
         ValidatePost();
-    }
-
-    public void ValidatePost()
-    {
-        // cardInitializer.AffectContamination();
-        cardInitializer.AffectTrust(false);
-        ColorBlock expiredColors = cardButton.colors;
-        expiredColors.disabledColor = expiredColor;
-        cardButton.colors = expiredColors;
-        cardButton.interactable = false;
-        isProcessed = true;
     }
 }

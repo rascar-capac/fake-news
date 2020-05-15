@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FileReader : MonoBehaviour
 {
+    public List<ACardData> PostData => postData;
+    public List<ACardData> InfoData => infoData;
+
     [SerializeField] private TextAsset posts = null;
     [SerializeField] private TextAsset infos = null;
     private List<ACardData> postData;
     private List<ACardData> infoData;
-
-    public List<ACardData> PostData => postData;
-    public List<ACardData> InfoData => infoData;
 
     private void Awake()
     {

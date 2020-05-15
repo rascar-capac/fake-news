@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool IsGameRunning => isGameRunning;
+    public GameEndedEvent OnGameEnded => onGameEnded;
+
     [SerializeField] [Range(0, 10f)] private float menuTransitionsTime = 1f;
     [SerializeField] private CanvasGroup mainMenuPanel = null;
     [SerializeField] private CanvasGroup pauseMenuPanel = null;
@@ -15,29 +18,7 @@ public class GameManager : MonoBehaviour
     private bool isGameLost;
     private TimeHandler timeHandler;
     private PopulationHandler populationHandler;
-    public class GameEndedEvent : UnityEvent<bool, int> {}
     private GameEndedEvent onGameEnded;
-
-    public bool IsGameRunning => isGameRunning;
-    public GameEndedEvent OnGameEnded => onGameEnded;
-
-    private void Awake()
-    {
-        isGameRunning = false;
-        isGameLost = false;
-        timeHandler = GetComponent<TimeHandler>();
-        populationHandler = GetComponent<PopulationHandler>();
-        onGameEnded = new GameEndedEvent();
-    }
-
-    private void Start()
-    {
-        gameOverPanel.gameObject.SetActive(false);
-        pauseMenuPanel.gameObject.SetActive(false);
-        timeHandler.OnLastDayReached.AddListener(EndGame);
-        // populationHandler.OnFullContamination.AddListener(LoseGame);
-        populationHandler.OnTrustNull.AddListener(LoseGame);
-    }
 
     public void StartGame()
     {
@@ -59,6 +40,35 @@ public class GameManager : MonoBehaviour
         pauseMenuPanel.gameObject.SetActive(false);
     }
 
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("quit");
+        Application.Quit();
+    }
+
+    private void Awake()
+    {
+        isGameRunning = false;
+        isGameLost = false;
+        timeHandler = GetComponent<TimeHandler>();
+        populationHandler = GetComponent<PopulationHandler>();
+        onGameEnded = new GameEndedEvent();
+    }
+
+    private void Start()
+    {
+        gameOverPanel.gameObject.SetActive(false);
+        pauseMenuPanel.gameObject.SetActive(false);
+        timeHandler.OnLastDayReached.AddListener(EndGame);
+        // populationHandler.OnFullContamination.AddListener(LoseGame);
+        populationHandler.OnTrustNull.AddListener(LoseGame);
+    }
+
     private void LoseGame()
     {
         isGameLost = true;
@@ -77,19 +87,10 @@ public class GameManager : MonoBehaviour
         OnGameEnded.Invoke(isGameLost, finalScore);
     }
 
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("quit");
-        Application.Quit();
-    }
-
     private void ComputeFinalScore()
     {
         finalScore = populationHandler.TrustLevel;
     }
+
+    public class GameEndedEvent : UnityEvent<bool, int> {}
 }
