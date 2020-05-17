@@ -18,11 +18,18 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
     private void Start()
     {
         Dictionary<string, string[]> categoryElements = FileReader.FetchCategories(infos.text);
+        Dictionary<int, string> tags = new Dictionary<int, string>();
+        foreach(string rawTag in categoryElements["tag"])
+        {
+            string[] tagElements = rawTag.Split(' ');
+            tags.Add(int.Parse(tagElements[0]), tagElements[1]);
+        }
+
         string[] templates = categoryElements["template"];
         for(int i = 0 ; i < templates.Length ; i += 2)
         {
             string template = templates[i + Random.Range(0, 2)];
-            InfoData newData = CreateInfo(template, categoryElements);
+            InfoData newData = CreateInfo(template, categoryElements, tags);
             infoCard.AddData(newData);
         }
 
@@ -43,17 +50,23 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
     private void SpawnCard()
     {
         InfoInitializer newCard = base.SpawnObject(infoCard);
+        if(newCard.Data.HasImpact)
+        {
+            newCard.AffectTrust();
+        }
         postSpawner.AddRelatedPosts(newCard.Data);
     }
 
-    private InfoData CreateInfo(string template, Dictionary<string, string[]> categoryElements)
+    private InfoData CreateInfo(string template, Dictionary<string, string[]> categoryElements, Dictionary<int, string> tags)
     {
-        string[] content = template.Split(new char[]{' '}, 4);
+        string[] templateElements = template.Split(new char[]{' '}, 4);
         InfoData newData = ScriptableObject.CreateInstance<InfoData>();
-        newData.Code = content[0];
-        newData.IsAffirmative = content[1] == "+" ? true : false;
-        newData.Tag = content[2];
-        newData.Text = FileReader.Format(content[3], categoryElements);
+        newData.Code = templateElements[0];
+        newData.IsAffirmative = templateElements[1] == "+" ? true : false;
+        newData.HasImpact = templateElements[2] == "I" ? true : false;
+        newData.Text = FileReader.Format(templateElements[3], categoryElements);
+        int tagCode = int.Parse(newData.Code.Substring(0, 1));
+        newData.Tag = tags[tagCode];
         return newData;
     }
 

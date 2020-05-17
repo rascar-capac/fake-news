@@ -42,7 +42,7 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
 
         foreach(PostData postData in data)
         {
-            if(postData.Code == "0")
+            if(postData.Code == "00")
             {
                 postCard.AddData(postData);
             }
@@ -68,11 +68,12 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
 
     private PostData CreatePost(string template, Dictionary<string, string[]> categoryElements)
     {
-        string[] content = template.Split(new char[]{' '}, 4);
+        string[] templateElements = template.Split(new char[]{' '}, 4);
         PostData newData = ScriptableObject.CreateInstance<PostData>();
-        newData.Code = content[0];
-        newData.IsAffirmative = content[1] == "+" ? true : false;
-        newData.Text = FileReader.Format(content[3], categoryElements);
+        newData.Code = templateElements[0];
+        newData.IsAffirmative = templateElements[1] == "+" ? true : false;
+        newData.HasImpact = templateElements[2] == "I" ? true : false;
+        newData.Text = FileReader.Format(templateElements[3], categoryElements);
         newData.IsFake = false;
         return newData;
     }
