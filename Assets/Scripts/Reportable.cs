@@ -6,53 +6,37 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class Reportable : MonoBehaviour
 {
-    [SerializeField] private int expirationDelay = 5;
-    [SerializeField] private Color expiredColor = Color.gray;
-    private PostInitializer postInitializer;
-    private Button cardButton;
-    private IEnumerator expirationCoroutine;
-    private bool isProcessed;
+    public bool IsReported => isReported;
+    [SerializeField] private Color reportedColor = Color.gray;
 
-    public void ValidatePost()
-    {
-        // cardInitializer.AffectContamination();
-        if(postInitializer.Data.HasImpact)
-        {
-            postInitializer.AffectTrust(false);
-        }
-        ColorBlock expiredColors = cardButton.colors;
-        expiredColors.disabledColor = expiredColor;
-        cardButton.colors = expiredColors;
-        cardButton.interactable = false;
-        isProcessed = true;
-    }
+    private bool isReported;
+    private Button cardButton;
+    private Color normalColor;
 
     public void ReportPost()
     {
-        if(!isProcessed)
+        if(!isReported)
         {
-            if(postInitializer.Data.HasImpact)
-            {
-                postInitializer.AffectTrust(true);
-            }
-            cardButton.interactable = false;
-            StopCoroutine(expirationCoroutine);
-            isProcessed = true;
+            isReported = true;
+            ColorBlock reportedColors = cardButton.colors;
+            reportedColors.normalColor = reportedColor;
+            reportedColors.selectedColor = reportedColor;
+            cardButton.colors = reportedColors;
+        }
+        else
+        {
+            isReported = false;
+            ColorBlock safeColors = cardButton.colors;
+            safeColors.normalColor = normalColor;
+            safeColors.selectedColor = normalColor;
+            cardButton.colors = safeColors;
         }
     }
 
     private void Awake()
     {
-        postInitializer = GetComponent<PostInitializer>();
+        isReported = false;
         cardButton = GetComponent<Button>();
-        expirationCoroutine = WaitForExpiration();
-        StartCoroutine(expirationCoroutine);
-        isProcessed = false;
-    }
-
-    private IEnumerator WaitForExpiration()
-    {
-        yield return new WaitForSeconds(expirationDelay);
-        ValidatePost();
+        normalColor = cardButton.colors.normalColor;
     }
 }

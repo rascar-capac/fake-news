@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 1575713320226350267}
   - component: {fileID: 3823710742823190999}
   - component: {fileID: -4409106052936778590}
+  - component: {fileID: -4557524982515058040}
   - component: {fileID: 6018023488569082010}
   - component: {fileID: 8665426080258901469}
   m_Layer: 5
@@ -590,8 +591,8 @@ MonoBehaviour:
     m_NormalColor: {r: 0.58431375, g: 0.6862745, b: 0.7529412, a: 1}
     m_HighlightedColor: {r: 0.78039217, g: 0.9254902, b: 0.93333334, a: 1}
     m_PressedColor: {r: 0.92156863, g: 0.3019608, b: 0.29411766, a: 1}
-    m_SelectedColor: {r: 0.58431375, g: 0.6862745, b: 0.7529412, a: 1}
-    m_DisabledColor: {r: 1, g: 0.4745098, b: 0.4745098, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.6862745, b: 0.75294125, a: 1}
+    m_DisabledColor: {r: 0.58431375, g: 0.6862745, b: 0.75294125, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.2
   m_SpriteState:
@@ -611,7 +612,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6018023488569082010}
-        m_MethodName: BlockPost
+        m_MethodName: ReportPost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -692,6 +693,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToAppear: 0.5
   trustImpact: 10
+--- !u!114 &-4557524982515058040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2864417890566774636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6140badc7694e0d4780a3ae18e969120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postDelay: 5
+  postedColor: {r: 0.7294118, g: 0.8627451, b: 0.34509805, a: 1}
 --- !u!114 &6018023488569082010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,8 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a71baf5fb976504ba553f45732744d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expirationDelay: 5
-  expiredColor: {r: 0.7294118, g: 0.8627451, b: 0.34509805, a: 1}
+  reportedColor: {r: 1, g: 0.4745098, b: 0.4745098, a: 1}
 --- !u!114 &8665426080258901469
 MonoBehaviour:
   m_ObjectHideFlags: 0

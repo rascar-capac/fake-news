@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PostData : ACardData {
     public bool IsFake { get; set; }
