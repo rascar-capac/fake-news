@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
+public class InfoSpawner : ACardSpawner<InfoInitializer, InfoData>
 {
-    [SerializeField] private TextAsset infos = null;
-    [SerializeField] [Range(0, 1f)] private float spawnProbability = 0.1f;
-    private TimeHandler timeHandler;
     private PostSpawner postSpawner;
 
     protected override void Awake()
     {
         base.Awake();
-        timeHandler = GetComponent<TimeHandler>();
         postSpawner = GetComponent<PostSpawner>();
     }
 
-    private void Start()
+    protected override void InstantiateTemplates(Dictionary<string, string[]> categoryElements)
     {
-        Dictionary<string, string[]> categoryElements = FileReader.FetchCategories(infos.text);
         Dictionary<int, string> tags = new Dictionary<int, string>();
         foreach(string rawTag in categoryElements["tag"])
         {
@@ -33,29 +28,6 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
             InfoData newData = CreateInfo(template, categoryElements, tags);
             AddData(newData);
         }
-
-        timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
-    }
-
-    private void TestSpawnProbability()
-    {
-        if(dataDeck.Count > 0)
-        {
-            if(Random.value <= spawnProbability)
-            {
-                SpawnCard();
-            }
-        }
-    }
-
-    private void SpawnCard()
-    {
-        InfoInitializer newCard = base.SpawnObject();
-        if(newCard.Data.HasImpact)
-        {
-            newCard.AffectTrust();
-        }
-        postSpawner.AddRelatedPosts(newCard.Data);
     }
 
     private InfoData CreateInfo(string template, Dictionary<string, string[]> categoryElements, Dictionary<int, string> tags)
@@ -69,5 +41,12 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
         string tag = tags[tagCode];
         InfoData newData = new InfoData(text, code, isAffirmative, hasImpact, tag);
         return newData;
+    }
+
+    protected override InfoInitializer SpawnObject()
+    {
+        InfoInitializer newCard = base.SpawnObject();
+        postSpawner.AddRelatedPosts(newCard.Data);
+        return newCard;
     }
 }

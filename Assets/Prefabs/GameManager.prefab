@@ -94,8 +94,8 @@ MonoBehaviour:
   prefab: {fileID: -4409106052936778590, guid: 504a3b514a297244f9f7915309e82e47, type: 3}
   context: {fileID: 0}
   hasUniqueData: 1
-  posts: {fileID: 4900000, guid: 85469518ae8445446b46edfc14c1add2, type: 3}
-  postSpawnProbability: 0.1
+  rawData: {fileID: 4900000, guid: 85469518ae8445446b46edfc14c1add2, type: 3}
+  spawnProbability: 0.1
 --- !u!114 &7276331388319099660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   prefab: {fileID: 3339137840145687944, guid: 5e9f6870b85f6ba4d869c6d6a50b32d9, type: 3}
   context: {fileID: 0}
   hasUniqueData: 1
-  infos: {fileID: 4900000, guid: fc0ecceafdbead542afa3ec1d270149a, type: 3}
+  rawData: {fileID: 4900000, guid: fc0ecceafdbead542afa3ec1d270149a, type: 3}
   spawnProbability: 0.1
 --- !u!114 &7276331388319099659
 MonoBehaviour:

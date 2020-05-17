@@ -2,45 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfoInitializer : ADataInitializer<InfoData>
+public class InfoInitializer : ACardInitializer<InfoData>
 {
-    [SerializeField] [Range(0, 10f)] private float timeToAppear = .5f;
-    [SerializeField] private int trustImpact = 10;
-    // [SerializeField] private int contaminationImpact = 10;
-    private PopulationHandler populationHandler;
-    private CardDisplayer cardDisplayer;
-
-    public override void Init(InfoData data)
+    public override void AffectTrust(bool isBlocked)
     {
-        base.Init(data);
-        cardDisplayer.Display(data, FinalizeCard);
+        PopulationHandler.TrustLevel += trustImpact;
     }
 
-    public void AffectTrust()
+    protected override void FinalizeCard()
     {
-        populationHandler.TrustLevel += trustImpact;
+        base.FinalizeCard();
+        if(data.HasImpact)
+        {
+            ApplyInstantEffect();
+        }
     }
 
-    // public void AffectContamination()
-    // {
-    //     populationHandler.ContaminationLevel += contaminationImpact;
-    // }
-
-    protected override void Awake()
+    private void ApplyInstantEffect()
     {
-        base.Awake();
-        populationHandler = FindObjectOfType<PopulationHandler>();
-        cardDisplayer = GetComponent<CardDisplayer>();
+        AffectTrust(false);
+        // AffectContamination();
     }
-
-    private void FinalizeCard()
-    {
-        GetComponent<CanvasGroup>().LeanAlpha(1, timeToAppear).setEaseOutQuint();
-        // ApplyInstantEffect();
-    }
-
-    // private void ApplyInstantEffect()
-    // {
-    //     AffectContamination();
-    // }
 }

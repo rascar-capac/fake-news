@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PostSpawner : ASpawner<PostInitializer, PostData>
+public class PostSpawner : ACardSpawner<PostInitializer, PostData>
 {
-    [SerializeField] private TextAsset posts = null;
-    [SerializeField] [Range(0, 1f)] private float postSpawnProbability = 0.1f;
-    private TimeHandler timeHandler;
     private List<PostData> data;
 
     public void AddRelatedPosts(InfoData infoData)
@@ -27,13 +24,11 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
     protected override void Awake()
     {
         base.Awake();
-        timeHandler = GetComponent<TimeHandler>();
         data = new List<PostData>();
     }
 
-    private void Start()
+    protected override void InstantiateTemplates(Dictionary<string, string[]> categoryElements)
     {
-        Dictionary<string, string[]> categoryElements = FileReader.FetchCategories(posts.text);
         string[] templates = categoryElements["template"];
         for(int i = 0 ; i < templates.Length ; i++)
         {
@@ -48,23 +43,6 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
                 AddData(postData);
             }
         }
-        timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
-    }
-
-    private void TestSpawnProbability()
-    {
-        if(dataDeck.Count > 0)
-        {
-            if(Random.value <= postSpawnProbability)
-            {
-                SpawnCard();
-            }
-        }
-    }
-
-    private void SpawnCard()
-    {
-        base.SpawnObject();
     }
 
     private PostData CreatePost(string template, Dictionary<string, string[]> categoryElements)

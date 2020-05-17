@@ -29,7 +29,7 @@ public abstract class ASpawner<T, U> : MonoBehaviour
         spawnedObjects = new List<T>();
     }
 
-    protected T SpawnObject()
+    protected virtual T SpawnObject()
     {
         T newObject = Instantiate(prefab, context);
         U data = PickRandomData(dataDeck, hasUniqueData);
