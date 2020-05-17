@@ -17,7 +17,7 @@ public abstract class ACardInitializer<T> : ADataInitializer<T> where T : ACardD
         cardDisplayer.Display(data, FinalizeCard);
     }
 
-    public abstract void AffectTrust(bool isBlocked);
+    public abstract void AffectTrust(bool isReported);
 
     // public void AffectContamination()
     // {

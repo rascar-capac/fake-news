@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PostInitializer : ACardInitializer<PostData>
 {
-    public override void AffectTrust(bool isBlocked)
+    public override void AffectTrust(bool isReported)
     {
-        if(isBlocked)
+        if(isReported)
         {
             PopulationHandler.TrustLevel += data.IsFake ? trustImpact : -trustImpact;
         }

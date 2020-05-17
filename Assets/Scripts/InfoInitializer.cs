@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfoInitializer : ACardInitializer<InfoData>
 {
-    public override void AffectTrust(bool isBlocked)
+    public override void AffectTrust(bool isReported)
     {
         PopulationHandler.TrustLevel += trustImpact;
     }

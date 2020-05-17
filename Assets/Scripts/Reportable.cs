@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class Blockable : MonoBehaviour
+public class Reportable : MonoBehaviour
 {
     [SerializeField] private int expirationDelay = 5;
     [SerializeField] private Color expiredColor = Color.gray;
@@ -27,7 +27,7 @@ public class Blockable : MonoBehaviour
         isProcessed = true;
     }
 
-    public void BlockPost()
+    public void ReportPost()
     {
         if(!isProcessed)
         {
