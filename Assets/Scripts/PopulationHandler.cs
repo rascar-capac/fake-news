@@ -12,6 +12,7 @@ public class PopulationHandler : MonoBehaviour
         {
             if(value != trustLevel)
             {
+                trustLevel = value;
                 if(trustLevel < 0)
                 {
                     trustLevel = 0;

@@ -8,7 +8,7 @@ public class Blockable : MonoBehaviour
 {
     [SerializeField] private int expirationDelay = 5;
     [SerializeField] private Color expiredColor = Color.gray;
-    private CardInitializer cardInitializer;
+    private PostInitializer postInitializer;
     private Button cardButton;
     private IEnumerator expirationCoroutine;
     private bool isProcessed;
@@ -16,7 +16,7 @@ public class Blockable : MonoBehaviour
     public void ValidatePost()
     {
         // cardInitializer.AffectContamination();
-        cardInitializer.AffectTrust(false);
+        postInitializer.AffectTrust(false);
         ColorBlock expiredColors = cardButton.colors;
         expiredColors.disabledColor = expiredColor;
         cardButton.colors = expiredColors;
@@ -28,7 +28,7 @@ public class Blockable : MonoBehaviour
     {
         if(!isProcessed)
         {
-            cardInitializer.AffectTrust(true);
+            postInitializer.AffectTrust(true);
             cardButton.interactable = false;
             StopCoroutine(expirationCoroutine);
             isProcessed = true;
@@ -37,7 +37,7 @@ public class Blockable : MonoBehaviour
 
     private void Awake()
     {
-        cardInitializer = GetComponent<CardInitializer>();
+        postInitializer = GetComponent<PostInitializer>();
         cardButton = GetComponent<Button>();
         expirationCoroutine = WaitForExpiration();
         StartCoroutine(expirationCoroutine);

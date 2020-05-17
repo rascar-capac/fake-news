@@ -29,17 +29,17 @@ public abstract class ASpawner<T, U> : MonoBehaviour
     [System.Serializable]
     protected abstract class SpawnableObject
     {
-        [SerializeField] private T prefab = null;
-        [SerializeField] private Transform context = null;
-        [SerializeField] private bool hasUniqueData = false;
-        private List<U> dataDeck = new List<U>();
-        private List<T> spawnedObjects = new List<T>();
-
         public T Prefab => prefab;
         public Transform Context => context;
         public bool HasUniqueData => hasUniqueData;
         public List<U> DataDeck => dataDeck;
         public List<T> SpawnedObjects => spawnedObjects;
+
+        [SerializeField] private T prefab = null;
+        [SerializeField] private Transform context = null;
+        [SerializeField] private bool hasUniqueData = false;
+        private List<U> dataDeck = new List<U>();
+        private List<T> spawnedObjects = new List<T>();
 
         public void AddData(U newData)
         {

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7276331390073369142}
   - component: {fileID: 7276331388319099662}
   - component: {fileID: 7276331388319099661}
+  - component: {fileID: 4976730955227098928}
   - component: {fileID: 7276331388319099660}
   - component: {fileID: 7276331388319099659}
-  - component: {fileID: 3723800684665626096}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -79,8 +79,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTrustLevel: 0
-  startingContaminationLevel: 0
-  randomContaminationVariationProbability: 0.1
+--- !u!114 &4976730955227098928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276331390073369143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0ad8286ba58b447a4e5fd1305803e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postCard:
+    prefab: {fileID: -4409106052936778590, guid: 504a3b514a297244f9f7915309e82e47,
+      type: 3}
+    context: {fileID: 0}
+    hasUniqueData: 1
+    postSpawnProbability: 0.1
+  posts: {fileID: 4900000, guid: 85469518ae8445446b46edfc14c1add2, type: 3}
 --- !u!114 &7276331388319099660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,16 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912ee8ebeb2dc1e439dcd13c96b7e6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  postCard:
-    prefab: {fileID: 0}
-    context: {fileID: 0}
-    hasUniqueData: 0
-    cardSpawnProbability: 0.1
   infoCard:
-    prefab: {fileID: 0}
+    prefab: {fileID: 3339137840145687944, guid: 5e9f6870b85f6ba4d869c6d6a50b32d9,
+      type: 3}
     context: {fileID: 0}
-    hasUniqueData: 0
-    cardSpawnProbability: 0.1
+    hasUniqueData: 1
+    spawnProbability: 0.1
+  infos: {fileID: 4900000, guid: fc0ecceafdbead542afa3ec1d270149a, type: 3}
 --- !u!114 &7276331388319099659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,24 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trust: {fileID: 0}
-  contamination: {fileID: 0}
   time: {fileID: 0}
   gameOverTitle: {fileID: 0}
   finalScore: {fileID: 0}
   updateColor: {r: 0.92156863, g: 0.3019608, b: 0.29411766, a: 1}
   gameLostText: "Population d\xE9cim\xE9e"
   gameWonText: "\xC9pid\xE9mie surmont\xE9e"
---- !u!114 &3723800684665626096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276331390073369143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e3f9f881b48b8543932a1cb8d36c061, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posts: {fileID: 0}
-  infos: {fileID: 0}

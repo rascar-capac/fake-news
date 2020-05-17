@@ -2,66 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FileReader : MonoBehaviour
+public static class FileReader
 {
-    public List<ACardData> PostData => postData;
-    public List<ACardData> InfoData => infoData;
-
-    [SerializeField] private TextAsset posts = null;
-    [SerializeField] private TextAsset infos = null;
-    private List<ACardData> postData;
-    private List<ACardData> infoData;
-
-    private void Awake()
-    {
-        postData = new List<ACardData>();
-        Dictionary<string, string[]> categories = FetchCategories(posts.text);
-        string[] templates = categories["template"];
-        for(int i = 0 ; i < templates.Length ; i++)
-        {
-            postData.Add(CreateData(templates[i], categories, posts.text));
-        }
-
-        infoData = new List<ACardData>();
-        categories = FetchCategories(infos.text);
-        templates = categories["template"];
-        for(int i = 0 ; i < templates.Length ; i+= 2)
-        {
-            string template = templates[i + Random.Range(0, 2)];
-            infoData.Add(CreateData(template, categories, infos.text));
-        }
-    }
-
-    private Dictionary<string, string[]> FetchCategories(string text)
+    public static Dictionary<string, string[]> FetchCategories(string text)
     {
         Dictionary<string, string[]> categoryElements = new Dictionary<string, string[]>();
-        string[] categories = FetchCategory("categories", text);
-        foreach(string category in categories)
+        string[] categoryNames = FetchCategory("categories", text);
+        foreach(string categoryName in categoryNames)
         {
-            categoryElements.Add(category, FetchCategory(category, text));
+            categoryElements.Add(categoryName, FetchCategory(categoryName, text));
         }
         return categoryElements;
     }
 
-    private string[] FetchCategory(string categoryName, string text)
-    {
-        string categoryText = GetTextBetween($"#{categoryName}\n", "\n\n", text);
-        return categoryText.Split('\n');
-    }
-
-    private ACardData CreateData(string template, Dictionary<string, string[]> categories, string text)
-    {
-        string[] content = template.Split(new char[]{' '}, 4);
-        ACardData newData = ScriptableObject.CreateInstance<ACardData>();
-        newData.Code = content[0];
-        newData.IsAffirmative = content[1] == "+" ? true : false;
-        newData.Tag = content[2];
-        newData.Text = Format(content[3], categories);
-        newData.IsFake = false;
-        return newData;
-    }
-
-    private string Format(string rawString, Dictionary<string, string[]> categoryElements)
+    public static string Format(string rawString, Dictionary<string, string[]> categoryElements)
     {
         while(rawString.Contains("["))
         {
@@ -111,14 +65,20 @@ public class FileReader : MonoBehaviour
         return rawString;
     }
 
-    private string GetTextBetween(string start, string end, string text)
+    private static string[] FetchCategory(string categoryName, string text)
+    {
+        string categoryText = GetTextBetween($"#{categoryName}\n", "\n\n", text);
+        return categoryText.Split('\n');
+    }
+
+    private static string GetTextBetween(string start, string end, string text)
     {
         int startIndex = text.IndexOf(start) + start.Length;
         int length = text.Substring(startIndex).IndexOf(end);
         return text.Substring(startIndex, length);
     }
 
-    private string ReplaceTextBetween(string start, string end, string replacement, string text)
+    private static string ReplaceTextBetween(string start, string end, string replacement, string text)
     {
         int startIndex = text.IndexOf(start);
         int length = text.Substring(startIndex).IndexOf(end, start.Length) + end.Length;
@@ -126,13 +86,13 @@ public class FileReader : MonoBehaviour
         return text.Replace(textToReplace, replacement);
     }
 
-    private string PickRandom(string categoryName, Dictionary<string, string[]> categoryElements)
+    private static string PickRandom(string categoryName, Dictionary<string, string[]> categoryElements)
     {
         string[] elements = categoryElements[categoryName];
         return elements[Random.Range(0, elements.Length)];
     }
 
-    private string PickRandom(string[] options)
+    private static string PickRandom(string[] options)
     {
         return options[Random.Range(0, options.Length)];
     }
