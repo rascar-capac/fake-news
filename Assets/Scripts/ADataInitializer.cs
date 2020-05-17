@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class ADataInitializer<T> : MonoBehaviour where T : ScriptableObject
+public abstract class ADataInitializer<T> : MonoBehaviour
 {
     public T Data => data;
     public DataInitializedEvent OnDataInitialized => onDataInitialized;

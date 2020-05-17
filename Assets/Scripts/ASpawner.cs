@@ -4,14 +4,37 @@ using UnityEngine;
 
 public abstract class ASpawner<T, U> : MonoBehaviour
         where T : ADataInitializer<U>
-        where U : ScriptableObject
 {
-    protected T SpawnObject(SpawnableObject spawnableObject)
+    public List<T> SpawnedObjects => spawnedObjects;
+
+    [SerializeField] private T prefab = null;
+    [SerializeField] private Transform context = null;
+    [SerializeField] private bool hasUniqueData = false;
+    protected List<U> dataDeck = new List<U>();
+    protected List<T> spawnedObjects;
+
+    public void AddData(U newData)
     {
-        T newObject = Instantiate(spawnableObject.Prefab, spawnableObject.Context);
-        U data = PickRandomData(spawnableObject.DataDeck, spawnableObject.HasUniqueData);
+        dataDeck.Add(newData);
+    }
+
+    public void AddData(List<U> newData)
+    {
+        dataDeck.AddRange(newData);
+    }
+
+    protected virtual void Awake()
+    {
+        dataDeck = new List<U>();
+        spawnedObjects = new List<T>();
+    }
+
+    protected T SpawnObject()
+    {
+        T newObject = Instantiate(prefab, context);
+        U data = PickRandomData(dataDeck, hasUniqueData);
         newObject.Init(data);
-        spawnableObject.SpawnedObjects.Add(newObject);
+        spawnedObjects.Add(newObject);
 
         return newObject;
     }
@@ -24,31 +47,5 @@ public abstract class ASpawner<T, U> : MonoBehaviour
             deck.Remove(data);
         }
         return data;
-    }
-
-    [System.Serializable]
-    protected abstract class SpawnableObject
-    {
-        public T Prefab => prefab;
-        public Transform Context => context;
-        public bool HasUniqueData => hasUniqueData;
-        public List<U> DataDeck => dataDeck;
-        public List<T> SpawnedObjects => spawnedObjects;
-
-        [SerializeField] private T prefab = null;
-        [SerializeField] private Transform context = null;
-        [SerializeField] private bool hasUniqueData = false;
-        private List<U> dataDeck = new List<U>();
-        private List<T> spawnedObjects = new List<T>();
-
-        public void AddData(U newData)
-        {
-            dataDeck.Add(newData);
-        }
-
-        public void AddData(List<U> newData)
-        {
-            dataDeck.AddRange(newData);
-        }
     }
 }

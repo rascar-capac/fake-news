@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PostSpawner : ASpawner<PostInitializer, PostData>
 {
-    [SerializeField] private SpawnablePost postCard = null;
     [SerializeField] private TextAsset posts = null;
+    [SerializeField] [Range(0, 1f)] private float postSpawnProbability = 0.1f;
     private TimeHandler timeHandler;
     private List<PostData> data;
 
@@ -15,7 +15,7 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
         {
             if(postData.Code == infoData.Code)
             {
-                postCard.AddData(postData);
+                AddData(postData);
                 if(postData.IsAffirmative != infoData.IsAffirmative)
                 {
                     postData.IsFake = true;
@@ -24,8 +24,9 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
         }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         timeHandler = GetComponent<TimeHandler>();
         data = new List<PostData>();
     }
@@ -44,7 +45,7 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
         {
             if(postData.Code == "00")
             {
-                postCard.AddData(postData);
+                AddData(postData);
             }
         }
         timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
@@ -52,9 +53,9 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
 
     private void TestSpawnProbability()
     {
-        if(postCard.DataDeck.Count > 0)
+        if(dataDeck.Count > 0)
         {
-            if(Random.value <= postCard.PostSpawnProbability)
+            if(Random.value <= postSpawnProbability)
             {
                 SpawnCard();
             }
@@ -63,26 +64,18 @@ public class PostSpawner : ASpawner<PostInitializer, PostData>
 
     private void SpawnCard()
     {
-        base.SpawnObject(postCard);
+        base.SpawnObject();
     }
 
     private PostData CreatePost(string template, Dictionary<string, string[]> categoryElements)
     {
-        string[] templateElements = template.Split(new char[]{' '}, 4);
-        PostData newData = ScriptableObject.CreateInstance<PostData>();
-        newData.Code = templateElements[0];
-        newData.IsAffirmative = templateElements[1] == "+" ? true : false;
-        newData.HasImpact = templateElements[2] == "I" ? true : false;
-        newData.Text = FileReader.Format(templateElements[3], categoryElements);
-        newData.IsFake = false;
-        return newData;
-    }
-
-    [System.Serializable]
-    protected class SpawnablePost : SpawnableObject
-    {
-        public float PostSpawnProbability => postSpawnProbability;
-
-        [SerializeField] [Range(0, 1f)] private float postSpawnProbability = 0.1f;
+         string[] templateElements = template.Split(new char[]{' '}, 4);
+         string code = templateElements[0];
+         bool isAffirmative = templateElements[1] == "+" ? true : false;
+         bool hasImpact = templateElements[2] == "I" ? true : false;
+         string text = FileReader.Format(templateElements[3], categoryElements);
+         bool isFake = false;
+         PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake);
+         return newData;
     }
 }

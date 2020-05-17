@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
 {
-    [SerializeField] private SpawnableInfo infoCard = null;
     [SerializeField] private TextAsset infos = null;
+    [SerializeField] [Range(0, 1f)] private float spawnProbability = 0.1f;
     private TimeHandler timeHandler;
     private PostSpawner postSpawner;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         timeHandler = GetComponent<TimeHandler>();
         postSpawner = GetComponent<PostSpawner>();
     }
@@ -30,7 +31,7 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
         {
             string template = templates[i + Random.Range(0, 2)];
             InfoData newData = CreateInfo(template, categoryElements, tags);
-            infoCard.AddData(newData);
+            AddData(newData);
         }
 
         timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
@@ -38,9 +39,9 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
 
     private void TestSpawnProbability()
     {
-        if(infoCard.DataDeck.Count > 0)
+        if(dataDeck.Count > 0)
         {
-            if(Random.value <= infoCard.SpawnProbability)
+            if(Random.value <= spawnProbability)
             {
                 SpawnCard();
             }
@@ -49,7 +50,7 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
 
     private void SpawnCard()
     {
-        InfoInitializer newCard = base.SpawnObject(infoCard);
+        InfoInitializer newCard = base.SpawnObject();
         if(newCard.Data.HasImpact)
         {
             newCard.AffectTrust();
@@ -60,21 +61,13 @@ public class InfoSpawner : ASpawner<InfoInitializer, InfoData>
     private InfoData CreateInfo(string template, Dictionary<string, string[]> categoryElements, Dictionary<int, string> tags)
     {
         string[] templateElements = template.Split(new char[]{' '}, 4);
-        InfoData newData = ScriptableObject.CreateInstance<InfoData>();
-        newData.Code = templateElements[0];
-        newData.IsAffirmative = templateElements[1] == "+" ? true : false;
-        newData.HasImpact = templateElements[2] == "I" ? true : false;
-        newData.Text = FileReader.Format(templateElements[3], categoryElements);
-        int tagCode = int.Parse(newData.Code.Substring(0, 1));
-        newData.Tag = tags[tagCode];
+        string code = templateElements[0];
+        bool isAffirmative = templateElements[1] == "+" ? true : false;
+        bool hasImpact = templateElements[2] == "I" ? true : false;
+        string text = FileReader.Format(templateElements[3], categoryElements);
+        int tagCode = int.Parse(code.Substring(0, 1));
+        string tag = tags[tagCode];
+        InfoData newData = new InfoData(text, code, isAffirmative, hasImpact, tag);
         return newData;
-    }
-
-    [System.Serializable]
-    protected class SpawnableInfo : SpawnableObject
-    {
-        public float SpawnProbability => spawnProbability;
-
-        [SerializeField] [Range(0, 1f)] private float spawnProbability = 0.1f;
     }
 }

@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Info", menuName = "Info")]
 public class InfoData : ACardData {
-    public string Tag { get; set; }
+    public string Tag => tag;
+
+    private string tag;
+
+    public InfoData(string text, string code, bool isAffirmative, bool hasImpact, string tag) :
+            base(text, code, isAffirmative, hasImpact)
+    {
+        this.tag = tag;
+    }
 }

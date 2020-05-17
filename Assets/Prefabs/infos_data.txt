@@ -30,8 +30,8 @@ tag
 6A - stock de masques vandalisé au centre de distribution principal
 6B + évasion massive de la plus grande prison du pays
 6B - évasion massive de la plus grande prison du pays
-6C + une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
-6C - une rave party inter-maisons de repo à provoqué la contamination de milliers de seniors
+6C + une rave party inter-maisons de repos a provoqué la contamination de milliers de seniors
+6C - une rave party inter-maisons de repos a provoqué la contamination de milliers de seniors
 
 #tag
 1 MED
