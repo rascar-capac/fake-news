@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class InfoInitializer : ACardInitializer<InfoData>
 {
-    public override void AffectTrust(bool isReported)
+    [SerializeField] private int trustImpact = 10;
+    // [SerializeField] private int contaminationImpact = 10;
+
+    public override void Init(InfoData data)
+    {
+        base.Init(data);
+        GetComponent<CardDisplayer>().Display(data, true, AffectPopulation);
+    }
+
+    public override void AffectPopulation()
+    {
+        if(data.HasImpact)
+        {
+            AffectTrust();
+            // AffectContamination();
+        }
+    }
+
+    private void AffectTrust()
     {
         PopulationHandler.TrustLevel += trustImpact;
     }
 
-    protected override void FinalizeCard()
-    {
-        base.FinalizeCard();
-        if(data.HasImpact)
-        {
-            ApplyInstantEffect();
-        }
-    }
-
-    private void ApplyInstantEffect()
-    {
-        AffectTrust(false);
-        // AffectContamination();
-    }
+    // private void AffectContamination()
+    // {
+    //     populationHandler.ContaminationLevel += contaminationImpact;
+    // }
 }

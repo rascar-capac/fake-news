@@ -6,32 +6,5 @@ public abstract class ACardInitializer<T> : ADataInitializer<T> where T : ACardD
 {
     public PopulationHandler PopulationHandler { get; set; }
 
-    [SerializeField] [Range(0, 10f)] private float timeToAppear = .5f;
-    [SerializeField] protected int trustImpact = 10;
-    // [SerializeField] private int contaminationImpact = 10;
-    private CardDisplayer cardDisplayer;
-
-    public override void Init(T data)
-    {
-        base.Init(data);
-        cardDisplayer.Display(data, FinalizeCard);
-    }
-
-    public abstract void AffectTrust(bool isReported);
-
-    // public void AffectContamination()
-    // {
-    //     populationHandler.ContaminationLevel += contaminationImpact;
-    // }
-
-    protected override void Awake()
-    {
-        base.Awake();
-        cardDisplayer = GetComponent<CardDisplayer>();
-    }
-
-    protected virtual void FinalizeCard()
-    {
-        GetComponent<CanvasGroup>().LeanAlpha(1, timeToAppear).setEaseOutQuint();
-    }
+    public abstract void AffectPopulation();
 }

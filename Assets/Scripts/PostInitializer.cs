@@ -4,7 +4,25 @@ using UnityEngine;
 
 public class PostInitializer : ACardInitializer<PostData>
 {
-    public override void AffectTrust(bool isReported)
+    [SerializeField] private int trustImpact = 10;
+    // [SerializeField] private int contaminationImpact = 10;
+
+    public override void Init(PostData data)
+    {
+        base.Init(data);
+        GetComponent<CardDisplayer>().Display(data);
+    }
+
+    public override void AffectPopulation()
+    {
+        if(data.HasImpact)
+        {
+            AffectTrust(GetComponent<Reportable>().IsReported);
+            // AffectContamination();
+        }
+    }
+
+    private void AffectTrust(bool isReported)
     {
         if(isReported)
         {

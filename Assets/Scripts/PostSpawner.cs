@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PostSpawner : ACardSpawner<PostInitializer, PostData>
 {
+    [SerializeField] RectTransform postedArea = null;
     private List<PostData> data;
-
     public void AddRelatedPosts(InfoData infoData)
     {
         foreach(PostData postData in data)
@@ -55,5 +55,16 @@ public class PostSpawner : ACardSpawner<PostInitializer, PostData>
          bool isFake = false;
          PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake);
          return newData;
+    }
+
+    protected override PostInitializer SpawnObject()
+    {
+        PostInitializer newPost = base.SpawnObject();
+        Postable postable;
+        if(newPost.TryGetComponent<Postable>(out postable))
+        {
+            postable.PostedArea = postedArea;
+        }
+        return newPost;
     }
 }

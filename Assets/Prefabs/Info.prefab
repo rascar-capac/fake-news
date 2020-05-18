@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5452613744953830308}
   - component: {fileID: 5452613744953830306}
   - component: {fileID: 5452613744953830309}
-  - component: {fileID: 7179737953979363883}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -157,31 +156,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7179737953979363883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5452613744953830311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
 --- !u!1 &5452613745185552366
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7ce715dfd9dc74ebc830a1a5613937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToAppear: 0.5
   trustImpact: 10
 --- !u!114 &9111421064870426662
 MonoBehaviour:
@@ -361,4 +334,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSlide: 0.5
+  timeToAppear: 0.5
   text: {fileID: 5452613744953830309}

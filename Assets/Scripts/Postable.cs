@@ -5,35 +5,34 @@ using UnityEngine.UI;
 
 public class Postable : MonoBehaviour
 {
-    public bool IsPosted => isPosted;
+    public RectTransform PostedArea { get; set; }
 
     [SerializeField] private int postDelay = 5;
     [SerializeField] private Color postedColor = Color.gray;
-    private bool isPosted;
     private Button cardButton;
     private PostInitializer postInitializer;
+    private CardDisplayer cardDisplayer;
     private Reportable reportable;
     private IEnumerator postingCoroutine;
 
     public void Post()
     {
-        if(postInitializer.Data.HasImpact)
-        {
-            postInitializer.AffectTrust(reportable.IsReported);
-            // postInitializer.AffectContamination();
-        }
         ColorBlock postedColors = cardButton.colors;
         postedColors.disabledColor = reportable.IsReported ? cardButton.colors.normalColor : postedColor;
         cardButton.colors = postedColors;
         cardButton.interactable = false;
-        isPosted = true;
+
+        cardDisplayer.Hide(() => {
+            transform.SetParent(PostedArea);
+            cardDisplayer.Display(postInitializer.Data, false, postInitializer.AffectPopulation);
+        });
     }
 
     private void Awake()
     {
-        isPosted = false;
         cardButton = GetComponent<Button>();
         postInitializer = GetComponent<PostInitializer>();
+        cardDisplayer = GetComponent<CardDisplayer>();
         reportable = GetComponent<Reportable>();
         postingCoroutine = WaitForPosting();
         StartCoroutine(postingCoroutine);
