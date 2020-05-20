@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InfoInitializer : ACardInitializer<InfoData>
 {
+    [SerializeField] private TextMeshProUGUI text = null;
     [SerializeField] private int trustImpact = 10;
     // [SerializeField] private int contaminationImpact = 10;
 
     public override void Init(InfoData data)
     {
         base.Init(data);
-        GetComponent<CardDisplayer>().Display(data, true, AffectPopulation);
+        text.SetText(data.Text);
+        GetComponent<CardDisplayer>().Display(data, AffectPopulation);
     }
 
     public override void AffectPopulation()

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PostSpawner : ACardSpawner<PostInitializer, PostData>
 {
+    [SerializeField] TextAsset rawNameData = null;
     [SerializeField] RectTransform postedArea = null;
     private List<PostData> data;
+
     public void AddRelatedPosts(InfoData infoData)
     {
         foreach(PostData postData in data)
@@ -29,10 +31,12 @@ public class PostSpawner : ACardSpawner<PostInitializer, PostData>
 
     protected override void InstantiateTemplates(Dictionary<string, string[]> categoryElements)
     {
+        Dictionary<string, string[]> nameCategoryElements = TextGenerator.FetchCategories(rawNameData.text);
         string[] templates = categoryElements["template"];
+
         for(int i = 0 ; i < templates.Length ; i++)
         {
-            PostData newData = CreatePost(templates[i], categoryElements);
+            PostData newData = CreatePost(templates[i], categoryElements, nameCategoryElements);
             data.Add(newData);
         }
 
@@ -45,15 +49,18 @@ public class PostSpawner : ACardSpawner<PostInitializer, PostData>
         }
     }
 
-    private PostData CreatePost(string template, Dictionary<string, string[]> categoryElements)
+    private PostData CreatePost(string template, Dictionary<string, string[]> categoryElements, Dictionary<string, string[]> nameCategoryElements)
     {
          string[] templateElements = template.Split(new char[]{' '}, 4);
          string code = templateElements[0];
          bool isAffirmative = templateElements[1] == "+" ? true : false;
          bool hasImpact = templateElements[2] == "I" ? true : false;
-         string text = FileReader.Format(templateElements[3], categoryElements);
+         string text = TextGenerator.Format(templateElements[3], categoryElements);
          bool isFake = false;
-         PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake);
+         string[] nameTemplates = nameCategoryElements["template"];
+         string rawAuthorName = nameTemplates[Random.Range(0, nameTemplates.Length)];
+         string authorName = TextGenerator.Format(rawAuthorName, nameCategoryElements);
+         PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake, authorName);
          return newData;
     }
 

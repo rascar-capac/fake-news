@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7ce715dfd9dc74ebc830a1a5613937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 5452613744953830309}
   trustImpact: 10
 --- !u!114 &9111421064870426662
 MonoBehaviour:
@@ -335,4 +336,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToSlide: 0.5
   timeToAppear: 0.5
-  text: {fileID: 5452613744953830309}

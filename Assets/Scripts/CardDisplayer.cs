@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using TMPro;
 
 public class CardDisplayer : MonoBehaviour
 {
     [SerializeField] [Range(0, 10f)] private float timeToSlide = .5f;
     [SerializeField] [Range(0, 10f)] private float timeToAppear = .5f;
-    [SerializeField] private TextMeshProUGUI text = null;
 
-    public void Display(ACardData data, bool isNewCard = true, System.Action callback = null)
+    public void Display(ACardData data, System.Action callback = null)
     {
-        if(isNewCard)
-        {
-            text?.SetText(data.Text);
-        }
         transform.SetAsFirstSibling();
         GetComponent<CanvasGroup>().alpha = 0;
         StartCoroutine(SlideSmooth(callback, true));

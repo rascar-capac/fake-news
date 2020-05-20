@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4074163809659065294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -188,10 +188,10 @@ RectTransform:
   m_Father: {fileID: 1683501168562260189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 39.16, y: -41.125}
+  m_SizeDelta: {x: 68.32, y: 15.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8433045280736109425
 CanvasRenderer:
@@ -691,8 +691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a88d471bfb3e55418d86da8527069a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToAppear: 0.5
   trustImpact: 10
+  text: {fileID: 2525469671328323344}
+  authorName: {fileID: 7456764272220669803}
 --- !u!114 &-4557524982515058040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSlide: 0.5
-  text: {fileID: 2525469671328323344}
+  timeToAppear: 0.5
 --- !u!1 &6361721359148833462
 GameObject:
   m_ObjectHideFlags: 0

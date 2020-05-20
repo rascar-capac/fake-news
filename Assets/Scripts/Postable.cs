@@ -24,7 +24,7 @@ public class Postable : MonoBehaviour
 
         cardDisplayer.Hide(() => {
             transform.SetParent(PostedArea);
-            cardDisplayer.Display(postInitializer.Data, false, postInitializer.AffectPopulation);
+            cardDisplayer.Display(postInitializer.Data, postInitializer.AffectPopulation);
         });
     }
 

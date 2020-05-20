@@ -36,7 +36,7 @@ public class InfoSpawner : ACardSpawner<InfoInitializer, InfoData>
         string code = templateElements[0];
         bool isAffirmative = templateElements[1] == "+" ? true : false;
         bool hasImpact = templateElements[2] == "I" ? true : false;
-        string text = FileReader.Format(templateElements[3], categoryElements);
+        string text = TextGenerator.Format(templateElements[3], categoryElements);
         int tagCode = int.Parse(code.Substring(0, 1));
         string tag = tags[tagCode];
         InfoData newData = new InfoData(text, code, isAffirmative, hasImpact, tag);

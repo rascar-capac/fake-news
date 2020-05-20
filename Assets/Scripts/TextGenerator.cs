@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class FileReader
+public static class TextGenerator
 {
     public static Dictionary<string, string[]> FetchCategories(string text)
     {

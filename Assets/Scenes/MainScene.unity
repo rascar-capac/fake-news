@@ -2312,6 +2312,16 @@ PrefabInstance:
       propertyPath: postedArea
       value: 
       objectReference: {fileID: 266003127}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: rawNameData
+      value: 
+      objectReference: {fileID: 4900000, guid: 0f5979ed3199d014184629aec7f4db59, type: 3}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: rawCardData
+      value: 
+      objectReference: {fileID: 4900000, guid: 85469518ae8445446b46edfc14c1add2, type: 3}
     - target: {fileID: 7276331388319099659, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
       propertyPath: trust
@@ -2470,6 +2480,11 @@ PrefabInstance:
       propertyPath: context
       value: 
       objectReference: {fileID: 2019776455}
+    - target: {fileID: 7276331388319099660, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: rawCardData
+      value: 
+      objectReference: {fileID: 4900000, guid: fc0ecceafdbead542afa3ec1d270149a, type: 3}
     - target: {fileID: 7276331388319099661, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
       propertyPath: startingTrustLevel

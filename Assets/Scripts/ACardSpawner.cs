@@ -6,7 +6,7 @@ public abstract class ACardSpawner<T, U> : ASpawner<T, U>
         where T : ACardInitializer<U>
         where U : ACardData
 {
-    [SerializeField] private TextAsset rawData = null;
+    [SerializeField] private TextAsset rawCardData = null;
     [SerializeField] [Range(0, 1f)] private float spawnProbability = 0.1f;
     private TimeHandler timeHandler;
 
@@ -18,7 +18,7 @@ public abstract class ACardSpawner<T, U> : ASpawner<T, U>
 
     private void Start()
     {
-        Dictionary<string, string[]> categoryElements = FileReader.FetchCategories(rawData.text);
+        Dictionary<string, string[]> categoryElements = TextGenerator.FetchCategories(rawCardData.text);
         InstantiateTemplates(categoryElements);
         timeHandler.OnTimeChanged.AddListener(TestSpawnProbability);
     }
