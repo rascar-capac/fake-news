@@ -5,6 +5,7 @@ using UnityEngine;
 public class PostSpawner : ACardSpawner<PostInitializer, PostData>
 {
     [SerializeField] TextAsset rawNameData = null;
+    [SerializeField] List<Sprite> avatars = null;
     [SerializeField] RectTransform postedArea = null;
     private List<PostData> data;
 
@@ -60,7 +61,8 @@ public class PostSpawner : ACardSpawner<PostInitializer, PostData>
          string[] nameTemplates = nameCategoryElements["template"];
          string rawAuthorName = nameTemplates[Random.Range(0, nameTemplates.Length)];
          string authorName = TextGenerator.Format(rawAuthorName, nameCategoryElements);
-         PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake, authorName);
+         Sprite avatar = avatars[Random.Range(0, avatars.Count)];
+         PostData newData = new PostData(text, code, isAffirmative, hasImpact, isFake, authorName, avatar);
          return newData;
     }
 

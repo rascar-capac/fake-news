@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PostInitializer : ACardInitializer<PostData>
@@ -9,12 +10,14 @@ public class PostInitializer : ACardInitializer<PostData>
     // [SerializeField] private int contaminationImpact = 10;
     [SerializeField] private TextMeshProUGUI text = null;
     [SerializeField] private TextMeshProUGUI authorName = null;
+    [SerializeField] private Image avatar = null;
 
     public override void Init(PostData data)
     {
         base.Init(data);
         text.SetText(data.Text);
         authorName.SetText(data.AuthorName);
+        avatar.sprite = data.Avatar;
         GetComponent<CardDisplayer>().Display(data);
     }
 

@@ -2299,6 +2299,11 @@ PrefabInstance:
       objectReference: {fileID: 4900000, guid: fc0ecceafdbead542afa3ec1d270149a, type: 3}
     - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
+      propertyPath: avatars.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
       propertyPath: postCard.context
       value: 
       objectReference: {fileID: 1033378478}
@@ -2322,6 +2327,30 @@ PrefabInstance:
       propertyPath: rawCardData
       value: 
       objectReference: {fileID: 4900000, guid: 85469518ae8445446b46edfc14c1add2, type: 3}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: avatars.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: cea2c9bf87b0c4dfdafb697a3ff00959,
+        type: 3}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: avatars.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: cea2c9bf87b0c4dfdafb697a3ff00959,
+        type: 3}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: avatars.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300004, guid: cea2c9bf87b0c4dfdafb697a3ff00959,
+        type: 3}
+    - target: {fileID: 4976730955227098928, guid: c08fe213145bda343be9b8f20dc32013,
+        type: 3}
+      propertyPath: avatars.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300006, guid: cea2c9bf87b0c4dfdafb697a3ff00959,
+        type: 3}
     - target: {fileID: 7276331388319099659, guid: c08fe213145bda343be9b8f20dc32013,
         type: 3}
       propertyPath: trust

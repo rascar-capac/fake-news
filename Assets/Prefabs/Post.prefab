@@ -694,6 +694,7 @@ MonoBehaviour:
   trustImpact: 10
   text: {fileID: 2525469671328323344}
   authorName: {fileID: 7456764272220669803}
+  avatar: {fileID: 2796554183898059316}
 --- !u!114 &-4557524982515058040
 MonoBehaviour:
   m_ObjectHideFlags: 0
